@@ -114,11 +114,13 @@ class Client extends BaseSoapClient
 			case 'serviceguid':
 			case 'service_guid':
 				$this->setServiceGuid($value);
+				unset($options['serviceguid'], $options['service_guid']);
 				break;
 
 			case 'contractguid':
 			case 'contract_guid':
 				$this->setContractGuid($value);
+				unset($options['contractguid'], $options['contract_guid']);
 				break;
 			}
 		}
