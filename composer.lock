@@ -679,12 +679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmasterskaya/base-soap-lib.git",
-                "reference": "b4c39ba674cb9563177ab4cbc2d4b0c0decb36de"
+                "reference": "4bc177869326d1183e2b041aec7c38d0dd6e25a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmasterskaya/base-soap-lib/zipball/b4c39ba674cb9563177ab4cbc2d4b0c0decb36de",
-                "reference": "b4c39ba674cb9563177ab4cbc2d4b0c0decb36de",
+                "url": "https://api.github.com/repos/webmasterskaya/base-soap-lib/zipball/4bc177869326d1183e2b041aec7c38d0dd6e25a3",
+                "reference": "4bc177869326d1183e2b041aec7c38d0dd6e25a3",
                 "shasum": ""
             },
             "require": {
@@ -701,7 +701,7 @@
                 "source": "https://github.com/webmasterskaya/base-soap-lib/tree/master",
                 "issues": "https://github.com/webmasterskaya/base-soap-lib/issues"
             },
-            "time": "2022-12-21T18:09:59+00:00"
+            "time": "2022-12-21T18:56:53+00:00"
         }
     ],
     "packages-dev": [],

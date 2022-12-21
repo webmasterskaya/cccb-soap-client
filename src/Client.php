@@ -130,7 +130,7 @@ class Client extends BaseSoapClient
 
 	protected function _preProcessArguments($arguments)
 	{
-		if (ClassHelper::shouldBeAnInstanceOf($this->getLastCalling(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\NewApplication'))
+		if (ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), Type\NewApplication::class))
 		{
 			[$application, $correctionApplication] = array_pad($arguments, 2, null);
 
@@ -145,7 +145,7 @@ class Client extends BaseSoapClient
 			}
 		}
 
-		if (ClassHelper::shouldBeAnInstanceOf($this->getLastCalling(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetCost'))
+		if (ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), Type\GetCost::class))
 		{
 			[$costingOptions] = $arguments;
 
@@ -155,24 +155,24 @@ class Client extends BaseSoapClient
 			}
 		}
 
-		if (ClassHelper::shouldImplement($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\ContractGuidAwareInterface'))
+		if (ClassHelper::shouldImplement($this->getLastClass(), Type\ContractGuidAwareInterface::class))
 		{
-			if (ClassHelper::shouldNotBeAnInstanceOf($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetF1Info')
-				&& ClassHelper::shouldNotBeAnInstanceOf($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetParcelHistory')
-				&& ClassHelper::shouldNotBeAnInstanceOf($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetParcelsStatuses'))
+			if (ClassHelper::shouldNotBeAnInstanceOf($this->getLastClass(), Type\GetF1Info::class)
+				&& ClassHelper::shouldNotBeAnInstanceOf($this->getLastClass(), Type\GetParcelHistory::class)
+				&& ClassHelper::shouldNotBeAnInstanceOf($this->getLastClass(), Type\GetParcelsStatuses::class))
 			{
 				array_unshift($arguments, $this->getContractGuid());
 			}
 			else
 			{
-				if (ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetF1Info'))
+				if (ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), Type\GetF1Info::class))
 				{
 					$arguments    = array_pad($arguments, 3, null);
 					$arguments[2] = $this->getContractGuid();
 				}
 
-				if (ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetParcelHistory')
-					|| ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), '\\Webmasterskaya\\Soap\\CCCB\\Type\\GetParcelsStatuses'))
+				if (ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), Type\GetParcelHistory::class)
+					|| ClassHelper::shouldBeAnInstanceOf($this->getLastClass(), Type\GetParcelsStatuses::class))
 				{
 					$arguments    = array_pad($arguments, 3, null);
 					$arguments[1] = $this->getContractGuid();
@@ -180,7 +180,7 @@ class Client extends BaseSoapClient
 			}
 		}
 
-		return parent::_preProcessArguments($arguments);
+		return (array) parent::_preProcessArguments($arguments);
 	}
 
 	public function getDefaultClassMap()
