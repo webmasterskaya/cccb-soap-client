@@ -1,0 +1,10 @@
+{
+	"autoload": {
+		"psr-4": {
+			"Webmasterskaya\\Soap\\CCCB\\" : "src/"
+		}
+	},
+	"require": {
+		"webmasterskaya/base-soap-lib": "latest"
+	}
+}
