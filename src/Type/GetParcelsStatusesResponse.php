@@ -7,12 +7,12 @@ use Webmasterskaya\Soap\Base\Type\ResponseInterface;
 class GetParcelsStatusesResponse implements ResponseInterface
 {
     /**
-     * @var  ResultOfGetParcelsStatuses
+     * @var   ResultOfGetParcelsStatuses
      */
     private $return;
 
     /**
-     * @return  ResultOfGetParcelsStatuses
+     * @return   ResultOfGetParcelsStatuses
      */
     public function getReturn()
     {
@@ -20,7 +20,7 @@ class GetParcelsStatusesResponse implements ResponseInterface
     }
 
     /**
-     * @param  ResultOfGetParcelsStatuses $return
+     * @param   ResultOfGetParcelsStatuses $return
      * @return GetParcelsStatusesResponse
      */
     public function withReturn($return)

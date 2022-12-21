@@ -4,104 +4,108 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 class ResultOfGetAccount
 {
-    /**
-     * @var bool
-     */
-    private $ResultFTP;
+	/**
+	 * @var bool
+	 */
+	private $ResultFTP;
 
-    /**
-     * @var bool
-     */
-    private $ResultBase;
+	/**
+	 * @var bool
+	 */
+	private $ResultBase;
 
-    /**
-     * @var string
-     */
-    private $AdditionallyFTP;
+	/**
+	 * @var string
+	 */
+	private $AdditionallyFTP;
 
-    /**
-     * @var string
-     */
-    private $AdditionallyBase;
+	/**
+	 * @var string
+	 */
+	private $AdditionallyBase;
 
-    /**
-     * @return bool
-     */
-    public function getResultFTP()
-    {
-        return $this->ResultFTP;
-    }
+	/**
+	 * @return bool
+	 */
+	public function getResultFTP()
+	{
+		return $this->ResultFTP;
+	}
 
-    /**
-     * @param bool $ResultFTP
-     * @return ResultOfGetAccount
-     */
-    public function withResultFTP($ResultFTP)
-    {
-        $new = clone $this;
-        $new->ResultFTP = $ResultFTP;
+	/**
+	 * @param   bool  $ResultFTP
+	 *
+	 * @return ResultOfGetAccount
+	 */
+	public function withResultFTP($ResultFTP)
+	{
+		$new            = clone $this;
+		$new->ResultFTP = $ResultFTP;
 
-        return $new;
-    }
+		return $new;
+	}
 
-    /**
-     * @return bool
-     */
-    public function getResultBase()
-    {
-        return $this->ResultBase;
-    }
+	/**
+	 * @return bool
+	 */
+	public function getResultBase()
+	{
+		return $this->ResultBase;
+	}
 
-    /**
-     * @param bool $ResultBase
-     * @return ResultOfGetAccount
-     */
-    public function withResultBase($ResultBase)
-    {
-        $new = clone $this;
-        $new->ResultBase = $ResultBase;
+	/**
+	 * @param   bool  $ResultBase
+	 *
+	 * @return ResultOfGetAccount
+	 */
+	public function withResultBase($ResultBase)
+	{
+		$new             = clone $this;
+		$new->ResultBase = $ResultBase;
 
-        return $new;
-    }
+		return $new;
+	}
 
-    /**
-     * @return string
-     */
-    public function getAdditionallyFTP()
-    {
-        return $this->AdditionallyFTP;
-    }
+	/**
+	 * @return string
+	 */
+	public function getAdditionallyFTP()
+	{
+		return $this->AdditionallyFTP;
+	}
 
-    /**
-     * @param string $AdditionallyFTP
-     * @return ResultOfGetAccount
-     */
-    public function withAdditionallyFTP($AdditionallyFTP)
-    {
-        $new = clone $this;
-        $new->AdditionallyFTP = $AdditionallyFTP;
+	/**
+	 * @param   string  $AdditionallyFTP
+	 *
+	 * @return ResultOfGetAccount
+	 */
+	public function withAdditionallyFTP($AdditionallyFTP)
+	{
+		$new                  = clone $this;
+		$new->AdditionallyFTP = $AdditionallyFTP;
 
-        return $new;
-    }
+		return $new;
+	}
 
-    /**
-     * @return string
-     */
-    public function getAdditionallyBase()
-    {
-        return $this->AdditionallyBase;
-    }
+	/**
+	 * @return string
+	 */
+	public function getAdditionallyBase()
+	{
+		return $this->AdditionallyBase;
+	}
 
-    /**
-     * @param string $AdditionallyBase
-     * @return ResultOfGetAccount
-     */
-    public function withAdditionallyBase($AdditionallyBase)
-    {
-        $new = clone $this;
-        $new->AdditionallyBase = $AdditionallyBase;
+	/**
+	 * @param   string  $AdditionallyBase
+	 *
+	 * @return ResultOfGetAccount
+	 */
+	public function withAdditionallyBase($AdditionallyBase)
+	{
+		$new                   = clone $this;
+		$new->AdditionallyBase = $AdditionallyBase;
 
-        return $new;
-    }
+		return $new;
+	}
 }
 

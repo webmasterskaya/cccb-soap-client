@@ -4,68 +4,47 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 
-class GetParcelInfo implements RequestInterface
+class GetParcelInfo implements RequestInterface, ContractGuidAwareInterface
 {
-    /**
-     * @var string
-     */
-    private $ContractGUID;
 
-    /**
-     * @var string
-     */
-    private $ParcelNumber;
+	use ContractGuidAwareTrait;
 
-    /**
-     * Constructor
-     *
-     * @var string $ContractGUID
-     * @var string $ParcelNumber
-     */
-    public function __construct($ContractGUID, $ParcelNumber)
-    {
-        $this->ContractGUID = $ContractGUID;
-        $this->ParcelNumber = $ParcelNumber;
-    }
+	/**
+	 * @var string
+	 */
+	private $ParcelNumber;
 
-    /**
-     * @return string
-     */
-    public function getContractGUID()
-    {
-        return $this->ContractGUID;
-    }
+	/**
+	 * Constructor
+	 *
+	 * @var string $ContractGUID
+	 * @var string $ParcelNumber
+	 */
+	public function __construct($ContractGUID, $ParcelNumber)
+	{
+		$this->ContractGUID = $ContractGUID;
+		$this->ParcelNumber = $ParcelNumber;
+	}
 
-    /**
-     * @param string $ContractGUID
-     * @return GetParcelInfo
-     */
-    public function withContractGUID($ContractGUID)
-    {
-        $new = clone $this;
-        $new->ContractGUID = $ContractGUID;
+	/**
+	 * @return string
+	 */
+	public function getParcelNumber()
+	{
+		return $this->ParcelNumber;
+	}
 
-        return $new;
-    }
+	/**
+	 * @param   string  $ParcelNumber
+	 *
+	 * @return GetParcelInfo
+	 */
+	public function withParcelNumber($ParcelNumber)
+	{
+		$new               = clone $this;
+		$new->ParcelNumber = $ParcelNumber;
 
-    /**
-     * @return string
-     */
-    public function getParcelNumber()
-    {
-        return $this->ParcelNumber;
-    }
-
-    /**
-     * @param string $ParcelNumber
-     * @return GetParcelInfo
-     */
-    public function withParcelNumber($ParcelNumber)
-    {
-        $new = clone $this;
-        $new->ParcelNumber = $ParcelNumber;
-
-        return $new;
-    }
+		return $new;
+	}
 }
 

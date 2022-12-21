@@ -4,32 +4,21 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 
-class AccountReport implements RequestInterface
+class AccountReport implements RequestInterface, ContractGuidAwareInterface
 {
-	/**
-	 * @var string
-	 */
-	private $ContractGUID;
+
+	use ContractGuidAwareTrait;
 
 	/**
-	 * @return string
-	 */
-	public function getContractGUID()
-	{
-		return $this->ContractGUID;
-	}
-
-	/**
-	 * @param   string  $ContractGUID
+	 * Constructor
 	 *
-	 * @return AccountReport
+	 * @var string $ContractGUID
 	 */
-	public function withContractGUID($ContractGUID)
+	public function __construct($ContractGUID)
 	{
-		$new               = clone $this;
-		$new->ContractGUID = $ContractGUID;
-
-		return $new;
+		$this->ContractGUID = $ContractGUID;
 	}
+
+
 }
 
