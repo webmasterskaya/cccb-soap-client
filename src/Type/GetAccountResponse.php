@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class GetAccountResponse implements ResponseInterface
+class GetAccountResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfGetAccount

@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class CancelApplicationResponse implements ResponseInterface
+class CancelApplicationResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfCancelApplication

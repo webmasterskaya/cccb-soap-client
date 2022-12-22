@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class NewApplicationResponse implements ResponseInterface
+class NewApplicationResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfNewApplication

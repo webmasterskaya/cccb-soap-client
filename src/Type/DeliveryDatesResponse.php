@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class DeliveryDatesResponse implements ResponseInterface
+class DeliveryDatesResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfOperation

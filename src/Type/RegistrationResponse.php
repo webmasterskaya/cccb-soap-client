@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class RegistrationResponse implements ResponseInterface
+class RegistrationResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfRegistration

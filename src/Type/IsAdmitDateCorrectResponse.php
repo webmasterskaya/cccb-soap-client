@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class IsAdmitDateCorrectResponse implements ResponseInterface
+class IsAdmitDateCorrectResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfOperation

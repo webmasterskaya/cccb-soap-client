@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class ProbResponse implements ResponseInterface
+class ProbResponse implements CccbResponseInterface
 {
 	/**
 	 * @var string

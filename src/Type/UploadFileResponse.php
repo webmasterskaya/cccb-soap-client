@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class UploadFileResponse implements ResponseInterface
+class UploadFileResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfOperation

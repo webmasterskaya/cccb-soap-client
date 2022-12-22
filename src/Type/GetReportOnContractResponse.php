@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class GetReportOnContractResponse implements ResponseInterface
+class GetReportOnContractResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfGetReportOnContract

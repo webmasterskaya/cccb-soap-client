@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class ChangeIDResponse implements ResponseInterface
+class ChangeIDResponse implements CccbResponseInterface
 {
 	/**
 	 * @var bool

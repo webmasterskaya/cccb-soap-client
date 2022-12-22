@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class GetParcelInfoResponse implements ResponseInterface
+class GetParcelInfoResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfParcelInfo

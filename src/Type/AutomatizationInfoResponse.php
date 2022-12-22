@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class AutomatizationInfoResponse implements ResponseInterface
+class AutomatizationInfoResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfAutomatizationInfo

@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class GetCostStandartResponse implements ResponseInterface
+class GetCostStandartResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfGetCostStandart

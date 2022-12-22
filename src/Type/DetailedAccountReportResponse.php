@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class DetailedAccountReportResponse implements ResponseInterface
+class DetailedAccountReportResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfDetailedAccountReport

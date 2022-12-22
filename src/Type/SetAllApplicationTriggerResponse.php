@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-use Webmasterskaya\Soap\Base\Type\ResponseInterface;
-
-class SetAllApplicationTriggerResponse implements ResponseInterface
+class SetAllApplicationTriggerResponse implements CccbResponseInterface
 {
 	/**
 	 * @var   ResultOfOperation
