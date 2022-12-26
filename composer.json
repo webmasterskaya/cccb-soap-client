@@ -5,7 +5,7 @@
 		}
 	},
 	"require": {
-		"webmasterskaya/base-soap-lib": "dev-master"
+		"webmasterskaya/base-soap-lib": "dev-dev-php-soap"
 	},
 	"repositories": [
 		{
