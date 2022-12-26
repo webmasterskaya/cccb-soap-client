@@ -6,7 +6,7 @@ use Laminas\Stdlib\ArrayUtils;
 use Traversable;
 use Webmasterskaya\Soap\Base\Client as BaseSoapClient;
 use Webmasterskaya\Soap\Base\Helper\ClassHelper;
-use Webmasterskaya\Soap\CCCB\Type\CccbResponseInterface;
+use Webmasterskaya\Soap\CCCB\Type\CccbResultInterface;
 
 /**
  * @method string prob()
@@ -193,7 +193,7 @@ class Client extends BaseSoapClient
     {
         $result = parent::_preProcessResult($result);
 
-        if ($result instanceof CccbResponseInterface) {
+        if ($result instanceof CccbResultInterface) {
             return $result->getReturn();
         }
 
