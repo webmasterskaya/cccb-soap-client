@@ -4,30 +4,29 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 class ResultOfDetailedAccountReport
 {
-	/**
-	 * @var   StringOfDetailedAccountReport
-	 */
-	private $StringsOfDetailedAccountReport;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\StringOfDetailedAccountReport
+     */
+    private $StringsOfDetailedAccountReport;
 
-	/**
-	 * @return   StringOfDetailedAccountReport
-	 */
-	public function getStringsOfDetailedAccountReport()
-	{
-		return $this->StringsOfDetailedAccountReport;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\StringOfDetailedAccountReport
+     */
+    public function getStringsOfDetailedAccountReport()
+    {
+        return $this->StringsOfDetailedAccountReport;
+    }
 
-	/**
-	 * @param   StringOfDetailedAccountReport  $StringsOfDetailedAccountReport
-	 *
-	 * @return ResultOfDetailedAccountReport
-	 */
-	public function withStringsOfDetailedAccountReport($StringsOfDetailedAccountReport)
-	{
-		$new                                 = clone $this;
-		$new->StringsOfDetailedAccountReport = $StringsOfDetailedAccountReport;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\StringOfDetailedAccountReport $StringsOfDetailedAccountReport
+     * @return ResultOfDetailedAccountReport
+     */
+    public function withStringsOfDetailedAccountReport($StringsOfDetailedAccountReport)
+    {
+        $new = clone $this;
+        $new->StringsOfDetailedAccountReport = $StringsOfDetailedAccountReport;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

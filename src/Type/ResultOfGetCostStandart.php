@@ -4,160 +4,154 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 class ResultOfGetCostStandart
 {
-	/**
-	 * @var string
-	 */
-	private $ErrorText;
+    /**
+     * @var string
+     */
+    private $ErrorText;
 
-	/**
-	 * @var float
-	 */
-	private $Sum;
+    /**
+     * @var float
+     */
+    private $Sum;
 
-	/**
-	 * @var bool
-	 */
-	private $IncludeNDS;
+    /**
+     * @var bool
+     */
+    private $IncludeNDS;
 
-	/**
-	 * @var float
-	 */
-	private $RateNDS;
+    /**
+     * @var float
+     */
+    private $RateNDS;
 
-	/**
-	 * @var float
-	 */
-	private $SumWithoutNDS;
+    /**
+     * @var float
+     */
+    private $SumWithoutNDS;
 
-	/**
-	 * @var   DetailCostStandart
-	 */
-	private $Details;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\DetailCostStandart
+     */
+    private $Details;
 
-	/**
-	 * @return string
-	 */
-	public function getErrorText()
-	{
-		return $this->ErrorText;
-	}
+    /**
+     * @return string
+     */
+    public function getErrorText()
+    {
+        return $this->ErrorText;
+    }
 
-	/**
-	 * @param   string  $ErrorText
-	 *
-	 * @return ResultOfGetCostStandart
-	 */
-	public function withErrorText($ErrorText)
-	{
-		$new            = clone $this;
-		$new->ErrorText = $ErrorText;
+    /**
+     * @param string $ErrorText
+     * @return ResultOfGetCostStandart
+     */
+    public function withErrorText($ErrorText)
+    {
+        $new = clone $this;
+        $new->ErrorText = $ErrorText;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return float
-	 */
-	public function getSum()
-	{
-		return $this->Sum;
-	}
+    /**
+     * @return float
+     */
+    public function getSum()
+    {
+        return $this->Sum;
+    }
 
-	/**
-	 * @param   float  $Sum
-	 *
-	 * @return ResultOfGetCostStandart
-	 */
-	public function withSum($Sum)
-	{
-		$new      = clone $this;
-		$new->Sum = $Sum;
+    /**
+     * @param float $Sum
+     * @return ResultOfGetCostStandart
+     */
+    public function withSum($Sum)
+    {
+        $new = clone $this;
+        $new->Sum = $Sum;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getIncludeNDS()
-	{
-		return $this->IncludeNDS;
-	}
+    /**
+     * @return bool
+     */
+    public function getIncludeNDS()
+    {
+        return $this->IncludeNDS;
+    }
 
-	/**
-	 * @param   bool  $IncludeNDS
-	 *
-	 * @return ResultOfGetCostStandart
-	 */
-	public function withIncludeNDS($IncludeNDS)
-	{
-		$new             = clone $this;
-		$new->IncludeNDS = $IncludeNDS;
+    /**
+     * @param bool $IncludeNDS
+     * @return ResultOfGetCostStandart
+     */
+    public function withIncludeNDS($IncludeNDS)
+    {
+        $new = clone $this;
+        $new->IncludeNDS = $IncludeNDS;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return float
-	 */
-	public function getRateNDS()
-	{
-		return $this->RateNDS;
-	}
+    /**
+     * @return float
+     */
+    public function getRateNDS()
+    {
+        return $this->RateNDS;
+    }
 
-	/**
-	 * @param   float  $RateNDS
-	 *
-	 * @return ResultOfGetCostStandart
-	 */
-	public function withRateNDS($RateNDS)
-	{
-		$new          = clone $this;
-		$new->RateNDS = $RateNDS;
+    /**
+     * @param float $RateNDS
+     * @return ResultOfGetCostStandart
+     */
+    public function withRateNDS($RateNDS)
+    {
+        $new = clone $this;
+        $new->RateNDS = $RateNDS;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return float
-	 */
-	public function getSumWithoutNDS()
-	{
-		return $this->SumWithoutNDS;
-	}
+    /**
+     * @return float
+     */
+    public function getSumWithoutNDS()
+    {
+        return $this->SumWithoutNDS;
+    }
 
-	/**
-	 * @param   float  $SumWithoutNDS
-	 *
-	 * @return ResultOfGetCostStandart
-	 */
-	public function withSumWithoutNDS($SumWithoutNDS)
-	{
-		$new                = clone $this;
-		$new->SumWithoutNDS = $SumWithoutNDS;
+    /**
+     * @param float $SumWithoutNDS
+     * @return ResultOfGetCostStandart
+     */
+    public function withSumWithoutNDS($SumWithoutNDS)
+    {
+        $new = clone $this;
+        $new->SumWithoutNDS = $SumWithoutNDS;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return   DetailCostStandart
-	 */
-	public function getDetails()
-	{
-		return $this->Details;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\DetailCostStandart
+     */
+    public function getDetails()
+    {
+        return $this->Details;
+    }
 
-	/**
-	 * @param   DetailCostStandart  $Details
-	 *
-	 * @return ResultOfGetCostStandart
-	 */
-	public function withDetails($Details)
-	{
-		$new          = clone $this;
-		$new->Details = $Details;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\DetailCostStandart $Details
+     * @return ResultOfGetCostStandart
+     */
+    public function withDetails($Details)
+    {
+        $new = clone $this;
+        $new->Details = $Details;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

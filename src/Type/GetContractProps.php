@@ -4,159 +4,176 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 
-class GetContractProps implements RequestInterface, ContractGuidAwareInterface
+class GetContractProps implements RequestInterface
 {
+    /**
+     * @var string
+     */
+    private $ContractGUID;
 
-	use ContractGuidAwareTrait;
+    /**
+     * @var bool
+     */
+    private $IncludeClient;
 
-	/**
-	 * @var bool
-	 */
-	private $IncludeClient;
+    /**
+     * @var bool
+     */
+    private $IncludeMainProps;
 
-	/**
-	 * @var bool
-	 */
-	private $IncludeMainProps;
+    /**
+     * @var bool
+     */
+    private $IncludeServices;
 
-	/**
-	 * @var bool
-	 */
-	private $IncludeServices;
+    /**
+     * @var bool
+     */
+    private $IncludeManager;
 
-	/**
-	 * @var bool
-	 */
-	private $IncludeManager;
+    /**
+     * @var bool
+     */
+    private $IncludeSumm;
 
-	/**
-	 * @var bool
-	 */
-	private $IncludeSumm;
+    /**
+     * Constructor
+     *
+     * @var string $ContractGUID
+     * @var bool $IncludeClient
+     * @var bool $IncludeMainProps
+     * @var bool $IncludeServices
+     * @var bool $IncludeManager
+     * @var bool $IncludeSumm
+     */
+    public function __construct($ContractGUID, $IncludeClient, $IncludeMainProps, $IncludeServices, $IncludeManager, $IncludeSumm)
+    {
+        $this->ContractGUID = $ContractGUID;
+        $this->IncludeClient = $IncludeClient;
+        $this->IncludeMainProps = $IncludeMainProps;
+        $this->IncludeServices = $IncludeServices;
+        $this->IncludeManager = $IncludeManager;
+        $this->IncludeSumm = $IncludeSumm;
+    }
 
-	/**
-	 * Constructor
-	 *
-	 * @var string $ContractGUID
-	 * @var bool   $IncludeClient
-	 * @var bool   $IncludeMainProps
-	 * @var bool   $IncludeServices
-	 * @var bool   $IncludeManager
-	 * @var bool   $IncludeSumm
-	 */
-	public function __construct($ContractGUID, $IncludeClient, $IncludeMainProps, $IncludeServices, $IncludeManager, $IncludeSumm)
-	{
-		$this->ContractGUID     = $ContractGUID;
-		$this->IncludeClient    = $IncludeClient;
-		$this->IncludeMainProps = $IncludeMainProps;
-		$this->IncludeServices  = $IncludeServices;
-		$this->IncludeManager   = $IncludeManager;
-		$this->IncludeSumm      = $IncludeSumm;
-	}
+    /**
+     * @return string
+     */
+    public function getContractGUID()
+    {
+        return $this->ContractGUID;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getIncludeClient()
-	{
-		return $this->IncludeClient;
-	}
+    /**
+     * @param string $ContractGUID
+     * @return GetContractProps
+     */
+    public function withContractGUID($ContractGUID)
+    {
+        $new = clone $this;
+        $new->ContractGUID = $ContractGUID;
 
-	/**
-	 * @param   bool  $IncludeClient
-	 *
-	 * @return GetContractProps
-	 */
-	public function withIncludeClient($IncludeClient)
-	{
-		$new                = clone $this;
-		$new->IncludeClient = $IncludeClient;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return bool
+     */
+    public function getIncludeClient()
+    {
+        return $this->IncludeClient;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getIncludeMainProps()
-	{
-		return $this->IncludeMainProps;
-	}
+    /**
+     * @param bool $IncludeClient
+     * @return GetContractProps
+     */
+    public function withIncludeClient($IncludeClient)
+    {
+        $new = clone $this;
+        $new->IncludeClient = $IncludeClient;
 
-	/**
-	 * @param   bool  $IncludeMainProps
-	 *
-	 * @return GetContractProps
-	 */
-	public function withIncludeMainProps($IncludeMainProps)
-	{
-		$new                   = clone $this;
-		$new->IncludeMainProps = $IncludeMainProps;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return bool
+     */
+    public function getIncludeMainProps()
+    {
+        return $this->IncludeMainProps;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getIncludeServices()
-	{
-		return $this->IncludeServices;
-	}
+    /**
+     * @param bool $IncludeMainProps
+     * @return GetContractProps
+     */
+    public function withIncludeMainProps($IncludeMainProps)
+    {
+        $new = clone $this;
+        $new->IncludeMainProps = $IncludeMainProps;
 
-	/**
-	 * @param   bool  $IncludeServices
-	 *
-	 * @return GetContractProps
-	 */
-	public function withIncludeServices($IncludeServices)
-	{
-		$new                  = clone $this;
-		$new->IncludeServices = $IncludeServices;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return bool
+     */
+    public function getIncludeServices()
+    {
+        return $this->IncludeServices;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getIncludeManager()
-	{
-		return $this->IncludeManager;
-	}
+    /**
+     * @param bool $IncludeServices
+     * @return GetContractProps
+     */
+    public function withIncludeServices($IncludeServices)
+    {
+        $new = clone $this;
+        $new->IncludeServices = $IncludeServices;
 
-	/**
-	 * @param   bool  $IncludeManager
-	 *
-	 * @return GetContractProps
-	 */
-	public function withIncludeManager($IncludeManager)
-	{
-		$new                 = clone $this;
-		$new->IncludeManager = $IncludeManager;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return bool
+     */
+    public function getIncludeManager()
+    {
+        return $this->IncludeManager;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getIncludeSumm()
-	{
-		return $this->IncludeSumm;
-	}
+    /**
+     * @param bool $IncludeManager
+     * @return GetContractProps
+     */
+    public function withIncludeManager($IncludeManager)
+    {
+        $new = clone $this;
+        $new->IncludeManager = $IncludeManager;
 
-	/**
-	 * @param   bool  $IncludeSumm
-	 *
-	 * @return GetContractProps
-	 */
-	public function withIncludeSumm($IncludeSumm)
-	{
-		$new              = clone $this;
-		$new->IncludeSumm = $IncludeSumm;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return bool
+     */
+    public function getIncludeSumm()
+    {
+        return $this->IncludeSumm;
+    }
+
+    /**
+     * @param bool $IncludeSumm
+     * @return GetContractProps
+     */
+    public function withIncludeSumm($IncludeSumm)
+    {
+        $new = clone $this;
+        $new->IncludeSumm = $IncludeSumm;
+
+        return $new;
+    }
 }
 

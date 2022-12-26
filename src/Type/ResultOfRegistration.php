@@ -4,186 +4,179 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 class ResultOfRegistration
 {
-	/**
-	 * @var bool
-	 */
-	private $Result;
+    /**
+     * @var bool
+     */
+    private $Result;
 
-	/**
-	 * @var string
-	 */
-	private $Reason;
+    /**
+     * @var string
+     */
+    private $Reason;
 
-	/**
-	 * @var   User
-	 */
-	private $User;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\User
+     */
+    private $User;
 
-	/**
-	 * @var   Contract
-	 */
-	private $Contract;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\Contract
+     */
+    private $Contract;
 
-	/**
-	 * @var bool
-	 */
-	private $Business_flag;
+    /**
+     * @var bool
+     */
+    private $Business_flag;
 
-	/**
-	 * @var bool
-	 */
-	private $Express_flag;
+    /**
+     * @var bool
+     */
+    private $Express_flag;
 
-	/**
-	 * @var bool
-	 */
-	private $Superexpress_flag;
+    /**
+     * @var bool
+     */
+    private $Superexpress_flag;
 
-	/**
-	 * @return bool
-	 */
-	public function getResult()
-	{
-		return $this->Result;
-	}
+    /**
+     * @return bool
+     */
+    public function getResult()
+    {
+        return $this->Result;
+    }
 
-	/**
-	 * @param   bool  $Result
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withResult($Result)
-	{
-		$new         = clone $this;
-		$new->Result = $Result;
+    /**
+     * @param bool $Result
+     * @return ResultOfRegistration
+     */
+    public function withResult($Result)
+    {
+        $new = clone $this;
+        $new->Result = $Result;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getReason()
-	{
-		return $this->Reason;
-	}
+    /**
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->Reason;
+    }
 
-	/**
-	 * @param   string  $Reason
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withReason($Reason)
-	{
-		$new         = clone $this;
-		$new->Reason = $Reason;
+    /**
+     * @param string $Reason
+     * @return ResultOfRegistration
+     */
+    public function withReason($Reason)
+    {
+        $new = clone $this;
+        $new->Reason = $Reason;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return   User
-	 */
-	public function getUser()
-	{
-		return $this->User;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\User
+     */
+    public function getUser()
+    {
+        return $this->User;
+    }
 
-	/**
-	 * @param   User  $User
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withUser($User)
-	{
-		$new       = clone $this;
-		$new->User = $User;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\User $User
+     * @return ResultOfRegistration
+     */
+    public function withUser($User)
+    {
+        $new = clone $this;
+        $new->User = $User;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return   Contract
-	 */
-	public function getContract()
-	{
-		return $this->Contract;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\Contract
+     */
+    public function getContract()
+    {
+        return $this->Contract;
+    }
 
-	/**
-	 * @param   Contract  $Contract
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withContract($Contract)
-	{
-		$new           = clone $this;
-		$new->Contract = $Contract;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\Contract $Contract
+     * @return ResultOfRegistration
+     */
+    public function withContract($Contract)
+    {
+        $new = clone $this;
+        $new->Contract = $Contract;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getBusiness_flag()
-	{
-		return $this->Business_flag;
-	}
+    /**
+     * @return bool
+     */
+    public function getBusiness_flag()
+    {
+        return $this->Business_flag;
+    }
 
-	/**
-	 * @param   bool  $Business_flag
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withBusiness_flag($Business_flag)
-	{
-		$new                = clone $this;
-		$new->Business_flag = $Business_flag;
+    /**
+     * @param bool $Business_flag
+     * @return ResultOfRegistration
+     */
+    public function withBusiness_flag($Business_flag)
+    {
+        $new = clone $this;
+        $new->Business_flag = $Business_flag;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getExpress_flag()
-	{
-		return $this->Express_flag;
-	}
+    /**
+     * @return bool
+     */
+    public function getExpress_flag()
+    {
+        return $this->Express_flag;
+    }
 
-	/**
-	 * @param   bool  $Express_flag
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withExpress_flag($Express_flag)
-	{
-		$new               = clone $this;
-		$new->Express_flag = $Express_flag;
+    /**
+     * @param bool $Express_flag
+     * @return ResultOfRegistration
+     */
+    public function withExpress_flag($Express_flag)
+    {
+        $new = clone $this;
+        $new->Express_flag = $Express_flag;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function getSuperexpress_flag()
-	{
-		return $this->Superexpress_flag;
-	}
+    /**
+     * @return bool
+     */
+    public function getSuperexpress_flag()
+    {
+        return $this->Superexpress_flag;
+    }
 
-	/**
-	 * @param   bool  $Superexpress_flag
-	 *
-	 * @return ResultOfRegistration
-	 */
-	public function withSuperexpress_flag($Superexpress_flag)
-	{
-		$new                    = clone $this;
-		$new->Superexpress_flag = $Superexpress_flag;
+    /**
+     * @param bool $Superexpress_flag
+     * @return ResultOfRegistration
+     */
+    public function withSuperexpress_flag($Superexpress_flag)
+    {
+        $new = clone $this;
+        $new->Superexpress_flag = $Superexpress_flag;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

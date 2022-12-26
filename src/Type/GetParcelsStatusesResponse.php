@@ -2,15 +2,17 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class GetParcelsStatusesResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class GetParcelsStatusesResponse implements ResultInterface
 {
     /**
-     * @var   ResultOfGetParcelsStatuses
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfGetParcelsStatuses
      */
     private $return;
 
     /**
-     * @return   ResultOfGetParcelsStatuses
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfGetParcelsStatuses
      */
     public function getReturn()
     {
@@ -18,7 +20,7 @@ class GetParcelsStatusesResponse implements CccbResponseInterface
     }
 
     /**
-     * @param   ResultOfGetParcelsStatuses $return
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfGetParcelsStatuses $return
      * @return GetParcelsStatusesResponse
      */
     public function withReturn($return)

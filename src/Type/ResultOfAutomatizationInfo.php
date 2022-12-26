@@ -4,108 +4,104 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 class ResultOfAutomatizationInfo
 {
-	/**
-	 * @var bool
-	 */
-	private $IsAutomatized;
+    /**
+     * @var bool
+     */
+    private $IsAutomatized;
 
-	/**
-	 * @var string
-	 */
-	private $USSName;
+    /**
+     * @var string
+     */
+    private $USSName;
 
-	/**
-	 * @var string
-	 */
-	private $USSEMail;
+    /**
+     * @var string
+     */
+    private $USSEMail;
 
-	/**
-	 * @var string
-	 */
-	private $USSCode;
+    /**
+     * @var string
+     */
+    private $USSCode;
 
-	/**
-	 * @return bool
-	 */
-	public function getIsAutomatized()
-	{
-		return $this->IsAutomatized;
-	}
+    /**
+     * @return bool
+     */
+    public function getIsAutomatized()
+    {
+        return $this->IsAutomatized;
+    }
 
-	/**
-	 * @param   bool  $IsAutomatized
-	 *
-	 * @return ResultOfAutomatizationInfo
-	 */
-	public function withIsAutomatized($IsAutomatized)
-	{
-		$new                = clone $this;
-		$new->IsAutomatized = $IsAutomatized;
+    /**
+     * @param bool $IsAutomatized
+     * @return ResultOfAutomatizationInfo
+     */
+    public function withIsAutomatized($IsAutomatized)
+    {
+        $new = clone $this;
+        $new->IsAutomatized = $IsAutomatized;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getUSSName()
-	{
-		return $this->USSName;
-	}
+    /**
+     * @return string
+     */
+    public function getUSSName()
+    {
+        return $this->USSName;
+    }
 
-	/**
-	 * @param   string  $USSName
-	 *
-	 * @return ResultOfAutomatizationInfo
-	 */
-	public function withUSSName($USSName)
-	{
-		$new          = clone $this;
-		$new->USSName = $USSName;
+    /**
+     * @param string $USSName
+     * @return ResultOfAutomatizationInfo
+     */
+    public function withUSSName($USSName)
+    {
+        $new = clone $this;
+        $new->USSName = $USSName;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getUSSEMail()
-	{
-		return $this->USSEMail;
-	}
+    /**
+     * @return string
+     */
+    public function getUSSEMail()
+    {
+        return $this->USSEMail;
+    }
 
-	/**
-	 * @param   string  $USSEMail
-	 *
-	 * @return ResultOfAutomatizationInfo
-	 */
-	public function withUSSEMail($USSEMail)
-	{
-		$new           = clone $this;
-		$new->USSEMail = $USSEMail;
+    /**
+     * @param string $USSEMail
+     * @return ResultOfAutomatizationInfo
+     */
+    public function withUSSEMail($USSEMail)
+    {
+        $new = clone $this;
+        $new->USSEMail = $USSEMail;
 
-		return $new;
-	}
+        return $new;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getUSSCode()
-	{
-		return $this->USSCode;
-	}
+    /**
+     * @return string
+     */
+    public function getUSSCode()
+    {
+        return $this->USSCode;
+    }
 
-	/**
-	 * @param   string  $USSCode
-	 *
-	 * @return ResultOfAutomatizationInfo
-	 */
-	public function withUSSCode($USSCode)
-	{
-		$new          = clone $this;
-		$new->USSCode = $USSCode;
+    /**
+     * @param string $USSCode
+     * @return ResultOfAutomatizationInfo
+     */
+    public function withUSSCode($USSCode)
+    {
+        $new = clone $this;
+        $new->USSCode = $USSCode;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 
