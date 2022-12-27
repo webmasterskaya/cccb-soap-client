@@ -5,29 +5,29 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 class ContactPerson
 {
     /**
-     * @var string
+     * @var string ФИО получателя
      */
     private $Name;
 
     /**
-     * @var string
+     * @var string Должность
      */
     private $Position;
 
     /**
-     * @var string
+     * @var string Телефон
      */
     private $Phone;
 
     /**
-     * @var string
+     * @var string Комментарий
      */
     private $Comment;
 
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->Name;
     }
@@ -36,7 +36,7 @@ class ContactPerson
      * @param string $Name
      * @return ContactPerson
      */
-    public function withName($Name)
+    public function withName(string $Name): ContactPerson
     {
         $new = clone $this;
         $new->Name = $Name;
@@ -47,7 +47,7 @@ class ContactPerson
     /**
      * @return string
      */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->Position;
     }
@@ -56,7 +56,7 @@ class ContactPerson
      * @param string $Position
      * @return ContactPerson
      */
-    public function withPosition($Position)
+    public function withPosition(string $Position): ContactPerson
     {
         $new = clone $this;
         $new->Position = $Position;
@@ -67,7 +67,7 @@ class ContactPerson
     /**
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->Phone;
     }
@@ -76,7 +76,7 @@ class ContactPerson
      * @param string $Phone
      * @return ContactPerson
      */
-    public function withPhone($Phone)
+    public function withPhone(string $Phone): ContactPerson
     {
         $new = clone $this;
         $new->Phone = $Phone;
@@ -87,7 +87,7 @@ class ContactPerson
     /**
      * @return string
      */
-    public function getComment()
+    public function getComment(): string
     {
         return $this->Comment;
     }
@@ -96,7 +96,7 @@ class ContactPerson
      * @param string $Comment
      * @return ContactPerson
      */
-    public function withComment($Comment)
+    public function withComment(string $Comment): ContactPerson
     {
         $new = clone $this;
         $new->Comment = $Comment;
