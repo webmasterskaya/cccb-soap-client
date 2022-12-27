@@ -129,6 +129,7 @@ class CccbClient extends ClientAbstract
      *
      * @return ResultInterface|Type\ProbResponse
      * @throws SoapException
+     * @see Type\Prob
      */
     public function prob(): Type\ProbResponse
     {
