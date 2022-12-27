@@ -7,23 +7,23 @@ use Webmasterskaya\Soap\Base\Type\ResultInterface;
 class GetParcelInfoResponse implements ResultInterface
 {
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfParcelInfo
+     * @var ResultOfParcelInfo
      */
     private $return;
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfParcelInfo
+     * @return ResultOfParcelInfo
      */
-    public function getReturn()
+    public function getReturn(): ResultOfParcelInfo
     {
         return $this->return;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfParcelInfo $return
+     * @param ResultOfParcelInfo $return
      * @return GetParcelInfoResponse
      */
-    public function withReturn($return)
+    public function withReturn(ResultOfParcelInfo $return): GetParcelInfoResponse
     {
         $new = clone $this;
         $new->return = $return;
