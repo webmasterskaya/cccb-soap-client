@@ -14,16 +14,22 @@ use Webmasterskaya\Soap\Base\Type\ResultInterface;
 class CccbClient extends ClientAbstract
 {
     /**
+     * Идентификатор договора контрагента СпецСвязи
+     *
      * @var string;
      */
     protected $contractGuid;
 
     /**
+     * Идентификатор услуги СпецСвязи
+     *
      * @var string
      */
     protected $serviceGuid;
 
     /**
+     * Возвращает идентификатор услуги СпецСвязи
+     *
      * @return string
      */
     public function getServiceGuid(): string
@@ -32,6 +38,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * Возвращает идентификатор договора контрагента СпецСвязи
+     *
      * @return string
      */
     public function getContractGuid(): string
@@ -39,6 +47,11 @@ class CccbClient extends ClientAbstract
         return $this->contractGuid;
     }
 
+    /**
+     * @param ExtSoapOptions $options
+     * @param Transport|null $transport
+     * @param MetadataOptions|null $metadataOptions
+     */
     public function __construct(
         ExtSoapOptions $options,
         ?Transport $transport = null,
@@ -46,6 +59,7 @@ class CccbClient extends ClientAbstract
     ) {
         $soapOptions = $options->getOptions();
 
+        // Обработка параметров специфических для реализации библиотеки
         $this->resolveOptions($soapOptions);
 
         $nextOptions = new ExtSoapOptions($options->getWsdl(), $soapOptions);
@@ -57,6 +71,12 @@ class CccbClient extends ClientAbstract
         parent::__construct($nextOptions, $transport, $metadataOptions);
     }
 
+    /**
+     * Разрешает значения полей "Идентификатор услуги СпецСвязи" и "Идентификатор договора контрагента СпецСвязи".
+     *
+     * @param array $options
+     * @return void
+     */
     protected function resolveOptions(array &$options)
     {
         $clientOptions = [];
@@ -83,6 +103,11 @@ class CccbClient extends ClientAbstract
         $this->contractGuid = $clientOptions['contract_guid'];
     }
 
+    /**
+     * Возвращает разрешитель значений полей, специфических для реализации библиотеки
+     *
+     * @return OptionsResolver
+     */
     protected function getResolver(): OptionsResolver
     {
         static $resolver;
@@ -100,6 +125,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * Пробный вызов веб-сервиса
+     *
      * @return ResultInterface|Type\ProbResponse
      * @throws SoapException
      */
@@ -109,6 +136,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * !I dont know what this
+     *
      * @return ResultInterface|Type\RegistrationResponse
      * @throws SoapException
      */
