@@ -2,72 +2,75 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
+use Webmasterskaya\Soap\CCCB\Constants\TYPE;
+use Webmasterskaya\Soap\CCCB\Constants\URGENCY;
+
 class CostingOptions
 {
     /**
-     * @var string
+     * @var string Идентификатор договора контрагента СпецСвязи
      */
     private $ContractGUID;
 
     /**
-     * @var string
+     * @var string Регион отправителя
      */
     private $SenderRegion;
 
     /**
-     * @var string
+     * @var string Район отправителя
      */
     private $SenderDistrict;
 
     /**
-     * @var string
+     * @var string Город отправителя
      */
     private $SenderCity;
 
     /**
-     * @var string
+     * @var string Населеный пункт отправителя
      */
     private $SenderLocality;
 
     /**
-     * @var bool
+     * @var bool Иностраный адрес получателя
      */
-    private $InternationalDelivery;
+    private $InternationalDelivery = false;
 
     /**
-     * @var bool
+     * @var bool Адрес получателя в стлице иностранного государства
      */
-    private $InternationalDeliveryToCapital;
+    private $InternationalDeliveryToCapital = false;
 
     /**
-     * @var string
+     * @var string Страна получателя
      */
     private $ReceiverCountry;
 
     /**
-     * @var string
+     * @var string Регион отправителя
      */
     private $ReceiverRegion;
 
     /**
-     * @var string
+     * @var string Район отправителя
      */
     private $ReceiverDistrict;
 
     /**
-     * @var string
+     * @var string Город отправителя
      */
     private $ReceiverCity;
 
     /**
-     * @var string
+     * @var string  Населеный пункт отправителя
      */
     private $ReceiverLocality;
 
     /**
-     * @var string
+     * @var string Тип срочности, в зависимости от договра
      */
-    private $ApplicationUrgencyCode;
+    private $ApplicationUrgencyCode = URGENCY::STANDARD;
 
     /**
      * @var string
@@ -75,49 +78,49 @@ class CostingOptions
     private $TypeDeliveryCode;
 
     /**
-     * @var string
+     * @var string Вид отправления
      */
-    private $ApplicationParcelTypeCode;
+    private $ApplicationParcelTypeCode = TYPE::PARCEL;
 
     /**
-     * @var float
+     * @var float Вес в кг
      */
-    private $Weight;
+    private $Weight = 0;
 
     /**
-     * @var float
+     * @var float Оценочная стоимость
      */
-    private $Price;
+    private $Price = 0;
 
     /**
-     * @var float
+     * @var float Длинна
      */
-    private $Length;
+    private $Length = 0;
 
     /**
-     * @var float
+     * @var float Ширина
      */
-    private $Width;
+    private $Width = 0;
 
     /**
-     * @var float
+     * @var float Высота
      */
-    private $Height;
+    private $Height = 0;
 
     /**
-     * @var float
+     * @var float Радиус (если вы хотите отправить шар)
      */
-    private $Radius;
+    private $Radius = 0;
 
     /**
-     * @var string
+     * @var string Индекс вложения
      */
     private $Index;
 
     /**
      * @return string
      */
-    public function getContractGUID()
+    public function getContractGUID(): string
     {
         return $this->ContractGUID;
     }
@@ -126,7 +129,7 @@ class CostingOptions
      * @param string $ContractGUID
      * @return CostingOptions
      */
-    public function withContractGUID($ContractGUID)
+    public function withContractGUID(string $ContractGUID): CostingOptions
     {
         $new = clone $this;
         $new->ContractGUID = $ContractGUID;
@@ -137,7 +140,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getSenderRegion()
+    public function getSenderRegion(): string
     {
         return $this->SenderRegion;
     }
@@ -146,7 +149,7 @@ class CostingOptions
      * @param string $SenderRegion
      * @return CostingOptions
      */
-    public function withSenderRegion($SenderRegion)
+    public function withSenderRegion(string $SenderRegion): CostingOptions
     {
         $new = clone $this;
         $new->SenderRegion = $SenderRegion;
@@ -157,7 +160,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getSenderDistrict()
+    public function getSenderDistrict(): string
     {
         return $this->SenderDistrict;
     }
@@ -166,7 +169,7 @@ class CostingOptions
      * @param string $SenderDistrict
      * @return CostingOptions
      */
-    public function withSenderDistrict($SenderDistrict)
+    public function withSenderDistrict(string $SenderDistrict): CostingOptions
     {
         $new = clone $this;
         $new->SenderDistrict = $SenderDistrict;
@@ -177,7 +180,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getSenderCity()
+    public function getSenderCity(): string
     {
         return $this->SenderCity;
     }
@@ -186,7 +189,7 @@ class CostingOptions
      * @param string $SenderCity
      * @return CostingOptions
      */
-    public function withSenderCity($SenderCity)
+    public function withSenderCity(string $SenderCity): CostingOptions
     {
         $new = clone $this;
         $new->SenderCity = $SenderCity;
@@ -197,7 +200,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getSenderLocality()
+    public function getSenderLocality(): string
     {
         return $this->SenderLocality;
     }
@@ -206,7 +209,7 @@ class CostingOptions
      * @param string $SenderLocality
      * @return CostingOptions
      */
-    public function withSenderLocality($SenderLocality)
+    public function withSenderLocality(string $SenderLocality): CostingOptions
     {
         $new = clone $this;
         $new->SenderLocality = $SenderLocality;
@@ -217,7 +220,7 @@ class CostingOptions
     /**
      * @return bool
      */
-    public function getInternationalDelivery()
+    public function getInternationalDelivery(): bool
     {
         return $this->InternationalDelivery;
     }
@@ -226,7 +229,7 @@ class CostingOptions
      * @param bool $InternationalDelivery
      * @return CostingOptions
      */
-    public function withInternationalDelivery($InternationalDelivery)
+    public function withInternationalDelivery(bool $InternationalDelivery): CostingOptions
     {
         $new = clone $this;
         $new->InternationalDelivery = $InternationalDelivery;
@@ -237,7 +240,7 @@ class CostingOptions
     /**
      * @return bool
      */
-    public function getInternationalDeliveryToCapital()
+    public function getInternationalDeliveryToCapital(): bool
     {
         return $this->InternationalDeliveryToCapital;
     }
@@ -246,7 +249,7 @@ class CostingOptions
      * @param bool $InternationalDeliveryToCapital
      * @return CostingOptions
      */
-    public function withInternationalDeliveryToCapital($InternationalDeliveryToCapital)
+    public function withInternationalDeliveryToCapital(bool $InternationalDeliveryToCapital): CostingOptions
     {
         $new = clone $this;
         $new->InternationalDeliveryToCapital = $InternationalDeliveryToCapital;
@@ -257,7 +260,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getReceiverCountry()
+    public function getReceiverCountry(): string
     {
         return $this->ReceiverCountry;
     }
@@ -266,7 +269,7 @@ class CostingOptions
      * @param string $ReceiverCountry
      * @return CostingOptions
      */
-    public function withReceiverCountry($ReceiverCountry)
+    public function withReceiverCountry(string $ReceiverCountry): CostingOptions
     {
         $new = clone $this;
         $new->ReceiverCountry = $ReceiverCountry;
@@ -277,7 +280,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getReceiverRegion()
+    public function getReceiverRegion(): string
     {
         return $this->ReceiverRegion;
     }
@@ -286,7 +289,7 @@ class CostingOptions
      * @param string $ReceiverRegion
      * @return CostingOptions
      */
-    public function withReceiverRegion($ReceiverRegion)
+    public function withReceiverRegion(string $ReceiverRegion): CostingOptions
     {
         $new = clone $this;
         $new->ReceiverRegion = $ReceiverRegion;
@@ -297,7 +300,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getReceiverDistrict()
+    public function getReceiverDistrict(): string
     {
         return $this->ReceiverDistrict;
     }
@@ -306,7 +309,7 @@ class CostingOptions
      * @param string $ReceiverDistrict
      * @return CostingOptions
      */
-    public function withReceiverDistrict($ReceiverDistrict)
+    public function withReceiverDistrict(string $ReceiverDistrict): CostingOptions
     {
         $new = clone $this;
         $new->ReceiverDistrict = $ReceiverDistrict;
@@ -317,7 +320,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getReceiverCity()
+    public function getReceiverCity(): string
     {
         return $this->ReceiverCity;
     }
@@ -326,7 +329,7 @@ class CostingOptions
      * @param string $ReceiverCity
      * @return CostingOptions
      */
-    public function withReceiverCity($ReceiverCity)
+    public function withReceiverCity(string $ReceiverCity): CostingOptions
     {
         $new = clone $this;
         $new->ReceiverCity = $ReceiverCity;
@@ -337,7 +340,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getReceiverLocality()
+    public function getReceiverLocality(): string
     {
         return $this->ReceiverLocality;
     }
@@ -346,7 +349,7 @@ class CostingOptions
      * @param string $ReceiverLocality
      * @return CostingOptions
      */
-    public function withReceiverLocality($ReceiverLocality)
+    public function withReceiverLocality(string $ReceiverLocality): CostingOptions
     {
         $new = clone $this;
         $new->ReceiverLocality = $ReceiverLocality;
@@ -357,7 +360,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getApplicationUrgencyCode()
+    public function getApplicationUrgencyCode(): string
     {
         return $this->ApplicationUrgencyCode;
     }
@@ -366,7 +369,7 @@ class CostingOptions
      * @param string $ApplicationUrgencyCode
      * @return CostingOptions
      */
-    public function withApplicationUrgencyCode($ApplicationUrgencyCode)
+    public function withApplicationUrgencyCode(string $ApplicationUrgencyCode): CostingOptions
     {
         $new = clone $this;
         $new->ApplicationUrgencyCode = $ApplicationUrgencyCode;
@@ -377,7 +380,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getTypeDeliveryCode()
+    public function getTypeDeliveryCode(): string
     {
         return $this->TypeDeliveryCode;
     }
@@ -386,7 +389,7 @@ class CostingOptions
      * @param string $TypeDeliveryCode
      * @return CostingOptions
      */
-    public function withTypeDeliveryCode($TypeDeliveryCode)
+    public function withTypeDeliveryCode(string $TypeDeliveryCode): CostingOptions
     {
         $new = clone $this;
         $new->TypeDeliveryCode = $TypeDeliveryCode;
@@ -397,7 +400,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getApplicationParcelTypeCode()
+    public function getApplicationParcelTypeCode(): string
     {
         return $this->ApplicationParcelTypeCode;
     }
@@ -406,7 +409,7 @@ class CostingOptions
      * @param string $ApplicationParcelTypeCode
      * @return CostingOptions
      */
-    public function withApplicationParcelTypeCode($ApplicationParcelTypeCode)
+    public function withApplicationParcelTypeCode(string $ApplicationParcelTypeCode): CostingOptions
     {
         $new = clone $this;
         $new->ApplicationParcelTypeCode = $ApplicationParcelTypeCode;
@@ -426,7 +429,7 @@ class CostingOptions
      * @param float $Weight
      * @return CostingOptions
      */
-    public function withWeight($Weight)
+    public function withWeight(float $Weight): CostingOptions
     {
         $new = clone $this;
         $new->Weight = $Weight;
@@ -446,7 +449,7 @@ class CostingOptions
      * @param float $Price
      * @return CostingOptions
      */
-    public function withPrice($Price)
+    public function withPrice(float $Price): CostingOptions
     {
         $new = clone $this;
         $new->Price = $Price;
@@ -466,7 +469,7 @@ class CostingOptions
      * @param float $Length
      * @return CostingOptions
      */
-    public function withLength($Length)
+    public function withLength(float $Length): CostingOptions
     {
         $new = clone $this;
         $new->Length = $Length;
@@ -486,7 +489,7 @@ class CostingOptions
      * @param float $Width
      * @return CostingOptions
      */
-    public function withWidth($Width)
+    public function withWidth(float $Width): CostingOptions
     {
         $new = clone $this;
         $new->Width = $Width;
@@ -506,7 +509,7 @@ class CostingOptions
      * @param float $Height
      * @return CostingOptions
      */
-    public function withHeight($Height)
+    public function withHeight(float $Height): CostingOptions
     {
         $new = clone $this;
         $new->Height = $Height;
@@ -526,7 +529,7 @@ class CostingOptions
      * @param float $Radius
      * @return CostingOptions
      */
-    public function withRadius($Radius)
+    public function withRadius(float $Radius): CostingOptions
     {
         $new = clone $this;
         $new->Radius = $Radius;
@@ -537,7 +540,7 @@ class CostingOptions
     /**
      * @return string
      */
-    public function getIndex()
+    public function getIndex(): string
     {
         return $this->Index;
     }
@@ -546,7 +549,7 @@ class CostingOptions
      * @param string $Index
      * @return CostingOptions
      */
-    public function withIndex($Index)
+    public function withIndex(string $Index): CostingOptions
     {
         $new = clone $this;
         $new->Index = $Index;
