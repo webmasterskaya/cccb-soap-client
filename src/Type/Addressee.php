@@ -2,62 +2,64 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
+use DateTimeInterface;
+
 class Addressee
 {
     /**
-     * @var string
+     * @var string Наименование организации/ФИО
      */
     private $Name;
 
     /**
-     * @var string
+     * @var string ИНН (только для организации)
      */
     private $INN;
 
     /**
-     * @var string
+     * @var string КПП (только для организации)
      */
     private $KPP;
 
     /**
-     * @var string
+     * @var string Тип Юр или Физ лицо (Физлицо: "physical";  Юрлицо"legal")
      */
     private $AddresseeTypeCode;
 
     /**
-     * @var string
+     * @var string Пол адресата
      */
     private $SexCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var DateTimeInterface День рождения
      */
     private $Birthday;
 
     /**
-     * @var string
+     * @var string Серия паспорта
      */
     private $PassportSeries;
 
     /**
-     * @var string
+     * @var string Номер паспорта
      */
     private $PassportNumber;
 
     /**
-     * @var string
+     * @var string Дата выдачи паспорта
      */
     private $PassportDate;
 
     /**
-     * @var string
+     * @var string Кем выдан паспорт
      */
     private $PassportIssuer;
 
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->Name;
     }
@@ -66,7 +68,7 @@ class Addressee
      * @param string $Name
      * @return Addressee
      */
-    public function withName($Name)
+    public function withName(string $Name): Addressee
     {
         $new = clone $this;
         $new->Name = $Name;
@@ -77,7 +79,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getINN()
+    public function getINN(): string
     {
         return $this->INN;
     }
@@ -86,7 +88,7 @@ class Addressee
      * @param string $INN
      * @return Addressee
      */
-    public function withINN($INN)
+    public function withINN(string $INN): Addressee
     {
         $new = clone $this;
         $new->INN = $INN;
@@ -97,7 +99,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getKPP()
+    public function getKPP(): string
     {
         return $this->KPP;
     }
@@ -106,7 +108,7 @@ class Addressee
      * @param string $KPP
      * @return Addressee
      */
-    public function withKPP($KPP)
+    public function withKPP(string $KPP): Addressee
     {
         $new = clone $this;
         $new->KPP = $KPP;
@@ -117,7 +119,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getAddresseeTypeCode()
+    public function getAddresseeTypeCode(): string
     {
         return $this->AddresseeTypeCode;
     }
@@ -126,7 +128,7 @@ class Addressee
      * @param string $AddresseeTypeCode
      * @return Addressee
      */
-    public function withAddresseeTypeCode($AddresseeTypeCode)
+    public function withAddresseeTypeCode(string $AddresseeTypeCode): Addressee
     {
         $new = clone $this;
         $new->AddresseeTypeCode = $AddresseeTypeCode;
@@ -137,7 +139,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getSexCode()
+    public function getSexCode(): string
     {
         return $this->SexCode;
     }
@@ -146,7 +148,7 @@ class Addressee
      * @param string $SexCode
      * @return Addressee
      */
-    public function withSexCode($SexCode)
+    public function withSexCode(string $SexCode): Addressee
     {
         $new = clone $this;
         $new->SexCode = $SexCode;
@@ -155,18 +157,18 @@ class Addressee
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    public function getBirthday()
+    public function getBirthday(): DateTimeInterface
     {
         return $this->Birthday;
     }
 
     /**
-     * @param \DateTimeInterface $Birthday
+     * @param DateTimeInterface $Birthday
      * @return Addressee
      */
-    public function withBirthday($Birthday)
+    public function withBirthday(DateTimeInterface $Birthday): Addressee
     {
         $new = clone $this;
         $new->Birthday = $Birthday;
@@ -177,7 +179,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getPassportSeries()
+    public function getPassportSeries(): string
     {
         return $this->PassportSeries;
     }
@@ -186,7 +188,7 @@ class Addressee
      * @param string $PassportSeries
      * @return Addressee
      */
-    public function withPassportSeries($PassportSeries)
+    public function withPassportSeries(string $PassportSeries): Addressee
     {
         $new = clone $this;
         $new->PassportSeries = $PassportSeries;
@@ -197,7 +199,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getPassportNumber()
+    public function getPassportNumber(): string
     {
         return $this->PassportNumber;
     }
@@ -206,7 +208,7 @@ class Addressee
      * @param string $PassportNumber
      * @return Addressee
      */
-    public function withPassportNumber($PassportNumber)
+    public function withPassportNumber(string $PassportNumber): Addressee
     {
         $new = clone $this;
         $new->PassportNumber = $PassportNumber;
@@ -217,7 +219,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getPassportDate()
+    public function getPassportDate(): string
     {
         return $this->PassportDate;
     }
@@ -226,7 +228,7 @@ class Addressee
      * @param string $PassportDate
      * @return Addressee
      */
-    public function withPassportDate($PassportDate)
+    public function withPassportDate(string $PassportDate): Addressee
     {
         $new = clone $this;
         $new->PassportDate = $PassportDate;
@@ -237,7 +239,7 @@ class Addressee
     /**
      * @return string
      */
-    public function getPassportIssuer()
+    public function getPassportIssuer(): string
     {
         return $this->PassportIssuer;
     }
@@ -246,7 +248,7 @@ class Addressee
      * @param string $PassportIssuer
      * @return Addressee
      */
-    public function withPassportIssuer($PassportIssuer)
+    public function withPassportIssuer(string $PassportIssuer): Addressee
     {
         $new = clone $this;
         $new->PassportIssuer = $PassportIssuer;
