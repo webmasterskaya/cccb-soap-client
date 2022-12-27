@@ -136,7 +136,7 @@ class CccbClient extends ClientAbstract
     }
 
     /**
-     * !I dont know what this
+     * ??? Регистрация пользователя ЛК Спецсвязи
      *
      * @return ResultInterface|Type\RegistrationResponse
      * @throws SoapException
@@ -152,8 +152,16 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * Создаёт новую заявку на отправление и возвращает параметры созданной заявки
+     *
+     * @param Type\Application $application Заявка на отправление
+     * @param string|null $correctionApplication GUID заявки, если нужно скорректировать уже существующую заявку
+     *
      * @return ResultInterface|Type\NewApplicationResponse
+     *
      * @throws SoapException
+     *
+     * @see Type\NewApplication
      */
     public function newApplication(
         Type\Application $application,
@@ -163,11 +171,14 @@ class CccbClient extends ClientAbstract
             'NewApplication',
             new Type\NewApplication(
                 $application
-                    ->withContractGUID($this->getContractGUID()),
+                    ->withContractGUID($this->getContractGUID())
+                    ->withServiceGUID($this->getServiceGUID()),
                 $correctionApplication));
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\ChangeID $parameters
      * @return ResultInterface|Type\ChangeIDResponse
      * @throws SoapException
