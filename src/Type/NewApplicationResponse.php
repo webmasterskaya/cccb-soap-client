@@ -7,23 +7,23 @@ use Webmasterskaya\Soap\Base\Type\ResultInterface;
 class NewApplicationResponse implements ResultInterface
 {
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfNewApplication
+     * @var ResultOfNewApplication
      */
     private $return;
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfNewApplication
+     * @return ResultOfNewApplication
      */
-    public function getReturn()
+    public function getReturn(): ResultOfNewApplication
     {
         return $this->return;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfNewApplication $return
+     * @param ResultOfNewApplication $return
      * @return NewApplicationResponse
      */
-    public function withReturn($return)
+    public function withReturn($return): NewApplicationResponse
     {
         $new = clone $this;
         $new->return = $return;
