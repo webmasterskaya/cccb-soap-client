@@ -267,7 +267,12 @@ class CccbClient extends ClientAbstract
      * Метод возвращает информацию об УСС, который обслуживает адрес, переданный в качестве входного параметра.
      *
      * @param Address $AddressInfo Адрес для проверки
+     *
      * @return ResultInterface|AutomatizationInfoResponse
+     *
+     * @throws SoapException
+     *
+     * @see Type\AutomatizationInfo
      */
     public function automatizationInfo(Type\Address $AddressInfo): Type\AutomatizationInfoResponse
     {
