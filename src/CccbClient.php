@@ -204,13 +204,19 @@ class CccbClient extends ClientAbstract
     }
 
     /**
-     * @param RequestInterface|Type\GetParcelInfo $parameters
+     * Метод возвращает информацию об отправлении с указанным приемным номером.
+     *
+     * @param string $ParcelNumber Приемный номер отправления
+     *
      * @return ResultInterface|Type\GetParcelInfoResponse
+     *
      * @throws SoapException
+     *
+     * @see Type\GetParcelInfo
      */
-    public function getParcelInfo(Type\GetParcelInfo $parameters): Type\GetParcelInfoResponse
+    public function getParcelInfo(string $ParcelNumber): Type\GetParcelInfoResponse
     {
-        return $this->call('GetParcelInfo', $parameters);
+        return $this->call('GetParcelInfo', new Type\GetParcelInfo($this->getContractGuid(), $ParcelNumber));
     }
 
     /**
