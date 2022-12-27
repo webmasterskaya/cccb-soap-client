@@ -15,6 +15,7 @@ composer reqiure webmasterskaya/cccb-soap-client
 ## Как пользоваться
 
 ```php
+<?php 
 
 // Получение экземпляра клиента
 /** @var \Webmasterskaya\Soap\CCCB\CccbClient $client */
