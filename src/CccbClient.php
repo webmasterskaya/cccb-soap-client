@@ -3,23 +3,16 @@
 namespace Webmasterskaya\Soap\CCCB;
 
 use Soap\Engine\Transport;
-use Soap\ExtSoapEngine\Configuration\ClassMap\ClassMap;
-use Soap\ExtSoapEngine\Configuration\ClassMap\ClassMapCollection;
 use Soap\ExtSoapEngine\ExtSoapOptions;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Webmasterskaya\Soap\Base\ClientAbstract;
 use Webmasterskaya\Soap\Base\Exception\SoapException;
-use Webmasterskaya\Soap\Base\Helper\ClassHelper;
 use Webmasterskaya\Soap\Base\Soap\Metadata\MetadataOptions;
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 use Webmasterskaya\Soap\Base\Type\ResultInterface;
-use Webmasterskaya\Soap\CCCB\Soap\Wsdl\CccbMainWsdlProvider;
-use Webmasterskaya\Soap\CCCB\Soap\Wsdl\CccbWsdlProviderInterface;
 
 class CccbClient extends ClientAbstract
 {
-    private static $wsdlProviderClass = CccbMainWsdlProvider::class;
-
     /**
      * @var string;
      */
@@ -55,45 +48,39 @@ class CccbClient extends ClientAbstract
 
         $this->resolveOptions($soapOptions);
 
-        $soapTypeMap = $options->getTypeMap();
-        $soapClassMap = $options->getClassMap();
-
-        $nextClassMap = $this->getClassmap($soapClassMap);
-
-        $nextOptions = new ExtSoapOptions('', $soapOptions);
+        $nextOptions = new ExtSoapOptions($options->getWsdl(), $soapOptions);
 
         $nextOptions
-            ->withWsdlProvider(new static::$wsdlProviderClass)
-            ->withClassMap($nextClassMap)
-            ->withTypemap($soapTypeMap);
+            ->withClassMap($options->getClassMap())
+            ->withTypemap($options->getTypeMap());
 
         parent::__construct($nextOptions, $transport, $metadataOptions);
     }
 
     protected function resolveOptions(array &$options)
     {
-        $cccbOptions = [];
+        $clientOptions = [];
 
         foreach ($options as $key => $value) {
             switch (strtolower($key)) {
                 case 'serviceguid':
                 case 'service_guid':
-                    $cccbOptions['service_guid'] = $value;
+                    $clientOptions['service_guid'] = $value;
                     unset($options[$key]);
                     break;
 
                 case 'contractguid':
                 case 'contract_guid':
-                    $cccbOptions['contract_guid'] = $value;
+                    $clientOptions['contract_guid'] = $value;
                     unset($options[$key]);
                     break;
             }
         }
 
-        $cccbOptions = $this->getResolver()->resolve($cccbOptions);
+        $clientOptions = $this->getResolver()->resolve($clientOptions);
 
-        $this->serviceGuid = $cccbOptions['service_guid'];
-        $this->contractGuid = $cccbOptions['contract_guid'];
+        $this->serviceGuid = $clientOptions['service_guid'];
+        $this->contractGuid = $clientOptions['contract_guid'];
     }
 
     protected function getResolver(): OptionsResolver
@@ -110,27 +97,6 @@ class CccbClient extends ClientAbstract
         $resolver->setAllowedTypes('service_guid', ['string']);
 
         return $resolver;
-    }
-
-    protected function getClassmap(ClassMapCollection $soapClassMap)
-    {
-        $cccbClassMap = (new CccbClassMapCollection)();
-
-        $classes = [];
-
-        /** @var ClassMap $classMap */
-        foreach ($cccbClassMap as $classMap) {
-            $typeName = $classMap->getWsdlType();
-            $classes[$typeName] = $classMap;
-        }
-
-        /** @var ClassMap $classMap */
-        foreach ($soapClassMap as $classMap) {
-            $typeName = $classMap->getWsdlType();
-            $classes[$typeName] = $classMap;
-        }
-
-        return new ClassMapCollection(...array_values($classes));
     }
 
     /**
@@ -400,12 +366,5 @@ class CccbClient extends ClientAbstract
     public function isAdmitDateCorrect(Type\IsAdmitDateCorrect $parameters
     ): Type\IsAdmitDateCorrectResponse {
         return $this->call('IsAdmitDateCorrect', $parameters);
-    }
-
-    public static function setWsdlProviderClass(string $wsdlProviderClass)
-    {
-        if (ClassHelper::shouldImplement($wsdlProviderClass, CccbWsdlProviderInterface::class)) {
-            static::$wsdlProviderClass = $wsdlProviderClass;
-        }
     }
 }
