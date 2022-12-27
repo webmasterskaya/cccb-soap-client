@@ -5,89 +5,89 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 class Address
 {
     /**
-     * @var string
+     * @var string Текстовое представление адреса в формате ФИАС
      */
     private $AddressText;
 
     /**
-     * @var string
+     * @var string Почтовый индекс
      */
     private $Index;
 
     /**
-     * @var string
+     * @var string Регион
      */
     private $Region;
 
     /**
-     * @var string
+     * @var string Район
      */
     private $District;
 
     /**
-     * @var string
+     * @var string Город
      */
     private $City;
 
     /**
-     * @var string
+     * @var string Населеный пункт
      */
     private $Locality;
 
     /**
-     * @var string
+     * @var string Улица
      */
     private $Street;
 
     /**
-     * @var string
+     * @var string Тип дома
      */
     private $HouseType;
 
     /**
-     * @var string
+     * @var string Дом
      */
     private $House;
 
     /**
-     * @var string
+     * @var string Тип Корпуса
      */
     private $HousingType;
 
     /**
-     * @var string
+     * @var string Корпус
      */
     private $Housing;
 
     /**
-     * @var string
+     * @var string Тип офиса
      */
     private $OfficeType;
 
     /**
-     * @var string
+     * @var string Офис
      */
     private $Office;
 
     /**
-     * @var bool
+     * @var bool Иностраный адрес
      */
-    private $International;
+    private $International = false;
 
     /**
-     * @var string
+     * @var string Страна
      */
     private $Country;
 
     /**
-     * @var bool
+     * @var bool Адрес в стлице иностранного государства
      */
-    private $AddressInTheCapital;
+    private $AddressInTheCapital = false;
 
     /**
      * @return string
      */
-    public function getAddressText()
+    public function getAddressText(): string
     {
         return $this->AddressText;
     }
@@ -96,7 +96,7 @@ class Address
      * @param string $AddressText
      * @return Address
      */
-    public function withAddressText($AddressText)
+    public function withAddressText(string $AddressText): Address
     {
         $new = clone $this;
         $new->AddressText = $AddressText;
@@ -107,7 +107,7 @@ class Address
     /**
      * @return string
      */
-    public function getIndex()
+    public function getIndex(): string
     {
         return $this->Index;
     }
@@ -116,7 +116,7 @@ class Address
      * @param string $Index
      * @return Address
      */
-    public function withIndex($Index)
+    public function withIndex(string $Index): Address
     {
         $new = clone $this;
         $new->Index = $Index;
@@ -127,7 +127,7 @@ class Address
     /**
      * @return string
      */
-    public function getRegion()
+    public function getRegion(): string
     {
         return $this->Region;
     }
@@ -136,7 +136,7 @@ class Address
      * @param string $Region
      * @return Address
      */
-    public function withRegion($Region)
+    public function withRegion(string $Region): Address
     {
         $new = clone $this;
         $new->Region = $Region;
@@ -147,7 +147,7 @@ class Address
     /**
      * @return string
      */
-    public function getDistrict()
+    public function getDistrict(): string
     {
         return $this->District;
     }
@@ -156,7 +156,7 @@ class Address
      * @param string $District
      * @return Address
      */
-    public function withDistrict($District)
+    public function withDistrict(string $District): Address
     {
         $new = clone $this;
         $new->District = $District;
@@ -167,7 +167,7 @@ class Address
     /**
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->City;
     }
@@ -176,7 +176,7 @@ class Address
      * @param string $City
      * @return Address
      */
-    public function withCity($City)
+    public function withCity(string $City): Address
     {
         $new = clone $this;
         $new->City = $City;
@@ -187,7 +187,7 @@ class Address
     /**
      * @return string
      */
-    public function getLocality()
+    public function getLocality(): string
     {
         return $this->Locality;
     }
@@ -196,7 +196,7 @@ class Address
      * @param string $Locality
      * @return Address
      */
-    public function withLocality($Locality)
+    public function withLocality(string $Locality): Address
     {
         $new = clone $this;
         $new->Locality = $Locality;
@@ -207,7 +207,7 @@ class Address
     /**
      * @return string
      */
-    public function getStreet()
+    public function getStreet(): string
     {
         return $this->Street;
     }
@@ -216,7 +216,7 @@ class Address
      * @param string $Street
      * @return Address
      */
-    public function withStreet($Street)
+    public function withStreet(string $Street): Address
     {
         $new = clone $this;
         $new->Street = $Street;
@@ -227,7 +227,7 @@ class Address
     /**
      * @return string
      */
-    public function getHouseType()
+    public function getHouseType(): string
     {
         return $this->HouseType;
     }
@@ -236,7 +236,7 @@ class Address
      * @param string $HouseType
      * @return Address
      */
-    public function withHouseType($HouseType)
+    public function withHouseType(string $HouseType): Address
     {
         $new = clone $this;
         $new->HouseType = $HouseType;
@@ -247,7 +247,7 @@ class Address
     /**
      * @return string
      */
-    public function getHouse()
+    public function getHouse(): string
     {
         return $this->House;
     }
@@ -256,7 +256,7 @@ class Address
      * @param string $House
      * @return Address
      */
-    public function withHouse($House)
+    public function withHouse(string $House): Address
     {
         $new = clone $this;
         $new->House = $House;
@@ -267,7 +267,7 @@ class Address
     /**
      * @return string
      */
-    public function getHousingType()
+    public function getHousingType(): string
     {
         return $this->HousingType;
     }
@@ -276,7 +276,7 @@ class Address
      * @param string $HousingType
      * @return Address
      */
-    public function withHousingType($HousingType)
+    public function withHousingType(string $HousingType): Address
     {
         $new = clone $this;
         $new->HousingType = $HousingType;
@@ -287,7 +287,7 @@ class Address
     /**
      * @return string
      */
-    public function getHousing()
+    public function getHousing(): string
     {
         return $this->Housing;
     }
@@ -296,7 +296,7 @@ class Address
      * @param string $Housing
      * @return Address
      */
-    public function withHousing($Housing)
+    public function withHousing(string $Housing): Address
     {
         $new = clone $this;
         $new->Housing = $Housing;
@@ -307,7 +307,7 @@ class Address
     /**
      * @return string
      */
-    public function getOfficeType()
+    public function getOfficeType(): string
     {
         return $this->OfficeType;
     }
@@ -316,7 +316,7 @@ class Address
      * @param string $OfficeType
      * @return Address
      */
-    public function withOfficeType($OfficeType)
+    public function withOfficeType(string $OfficeType): Address
     {
         $new = clone $this;
         $new->OfficeType = $OfficeType;
@@ -327,7 +327,7 @@ class Address
     /**
      * @return string
      */
-    public function getOffice()
+    public function getOffice(): string
     {
         return $this->Office;
     }
@@ -336,7 +336,7 @@ class Address
      * @param string $Office
      * @return Address
      */
-    public function withOffice($Office)
+    public function withOffice(string $Office): Address
     {
         $new = clone $this;
         $new->Office = $Office;
@@ -347,7 +347,7 @@ class Address
     /**
      * @return bool
      */
-    public function getInternational()
+    public function getInternational(): bool
     {
         return $this->International;
     }
@@ -356,7 +356,7 @@ class Address
      * @param bool $International
      * @return Address
      */
-    public function withInternational($International)
+    public function withInternational(bool $International): Address
     {
         $new = clone $this;
         $new->International = $International;
@@ -367,7 +367,7 @@ class Address
     /**
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): string
     {
         return $this->Country;
     }
@@ -376,7 +376,7 @@ class Address
      * @param string $Country
      * @return Address
      */
-    public function withCountry($Country)
+    public function withCountry(string $Country): Address
     {
         $new = clone $this;
         $new->Country = $Country;
@@ -387,7 +387,7 @@ class Address
     /**
      * @return bool
      */
-    public function getAddressInTheCapital()
+    public function getAddressInTheCapital(): bool
     {
         return $this->AddressInTheCapital;
     }
@@ -396,7 +396,7 @@ class Address
      * @param bool $AddressInTheCapital
      * @return Address
      */
-    public function withAddressInTheCapital($AddressInTheCapital)
+    public function withAddressInTheCapital(bool $AddressInTheCapital): Address
     {
         $new = clone $this;
         $new->AddressInTheCapital = $AddressInTheCapital;
