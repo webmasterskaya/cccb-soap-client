@@ -2,82 +2,90 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
+use Webmasterskaya\Soap\CCCB\Constants\IMPORTANCE;
+use Webmasterskaya\Soap\CCCB\Constants\TYPE;
+use Webmasterskaya\Soap\CCCB\Constants\URGENCY;
+
 class Parcel
 {
     /**
-     * @var float
+     * @var float Вес в кг
      */
-    private $Weight;
+    private $Weight = 0;
 
     /**
-     * @var int
+     * @var int Количество мест. Если отправление много местно указывается количество мест
      */
-    private $Count;
+    private $Count = 1;
 
     /**
-     * @var string
+     * @var string Индекс вложения
+     * @see \Webmasterskaya\Soap\CCCB\Constants\INDEX
      */
     private $Index;
 
     /**
-     * @var string
+     * @var string Тип срочности, в зависимости от договра
+     * @see \Webmasterskaya\Soap\CCCB\Constants\URGENCY
      */
-    private $ApplicationUrgencyCode;
+    private $ApplicationUrgencyCode = URGENCY::STANDARD;
 
     /**
-     * @var string
+     * @var string Вид отправления
+     * @see \Webmasterskaya\Soap\CCCB\Constants\TYPE
      */
-    private $ApplicationParcelTypeCode;
+    private $ApplicationParcelTypeCode = TYPE::PARCEL;
 
     /**
-     * @var string
+     * @var string Тип важности
+     * @see \Webmasterskaya\Soap\CCCB\Constants\IMPORTANCE
      */
-    private $ApplicationParcelImportanceCode;
+    private $ApplicationParcelImportanceCode = IMPORTANCE::CEN;
 
     /**
-     * @var string
+     * @var string Комментарий
      */
     private $Comment;
 
     /**
-     * @var float
+     * @var float Оценочная стоимость
      */
-    private $Price;
+    private $Price = 0;
 
     /**
-     * @var string
+     * @var string Статус отправления
      */
     private $ApplicationParcelStatusCode;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\Addressee
+     * @var Addressee Получатель
      */
     private $Addressee;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\Address
+     * @var Address Адрес получателя
      */
     private $Address;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\ContactPerson
+     * @var ContactPerson Контактное лицо получателя
      */
     private $ContactPerson;
 
     /**
-     * @var string
+     * @var string Максимальный габарит
      */
     private $MaxDimension;
 
     /**
-     * @var string
+     * @var string Номер отправления
      */
     private $Number;
 
     /**
-     * @var float
+     * @var float Сумма наложеного платежа
      */
-    private $NalPlatezhSum;
+    private $NalPlatezhSum = 0;
 
     /**
      * @var string
@@ -85,24 +93,24 @@ class Parcel
     private $SalesOrderNumber;
 
     /**
-     * @var string
+     * @var string Номер отправления отправителя
      */
     private $CustomerNumber;
 
     /**
-     * @var float
+     * @var float Длинна
      */
-    private $Length;
+    private $Length = 0;
 
     /**
-     * @var float
+     * @var float Ширина
      */
-    private $Width;
+    private $Width = 0;
 
     /**
-     * @var float
+     * @var float Высота
      */
-    private $Height;
+    private $Height = 0;
 
     /**
      * @return float
@@ -116,7 +124,7 @@ class Parcel
      * @param float $Weight
      * @return Parcel
      */
-    public function withWeight($Weight)
+    public function withWeight(float $Weight): Parcel
     {
         $new = clone $this;
         $new->Weight = $Weight;
@@ -127,7 +135,7 @@ class Parcel
     /**
      * @return int
      */
-    public function getCount()
+    public function getCount(): int
     {
         return $this->Count;
     }
@@ -136,7 +144,7 @@ class Parcel
      * @param int $Count
      * @return Parcel
      */
-    public function withCount($Count)
+    public function withCount(int $Count): Parcel
     {
         $new = clone $this;
         $new->Count = $Count;
@@ -147,7 +155,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getIndex()
+    public function getIndex(): string
     {
         return $this->Index;
     }
@@ -156,7 +164,7 @@ class Parcel
      * @param string $Index
      * @return Parcel
      */
-    public function withIndex($Index)
+    public function withIndex(string $Index): Parcel
     {
         $new = clone $this;
         $new->Index = $Index;
@@ -167,7 +175,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getApplicationUrgencyCode()
+    public function getApplicationUrgencyCode(): string
     {
         return $this->ApplicationUrgencyCode;
     }
@@ -176,7 +184,7 @@ class Parcel
      * @param string $ApplicationUrgencyCode
      * @return Parcel
      */
-    public function withApplicationUrgencyCode($ApplicationUrgencyCode)
+    public function withApplicationUrgencyCode(string $ApplicationUrgencyCode): Parcel
     {
         $new = clone $this;
         $new->ApplicationUrgencyCode = $ApplicationUrgencyCode;
@@ -187,7 +195,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getApplicationParcelTypeCode()
+    public function getApplicationParcelTypeCode(): string
     {
         return $this->ApplicationParcelTypeCode;
     }
@@ -196,7 +204,7 @@ class Parcel
      * @param string $ApplicationParcelTypeCode
      * @return Parcel
      */
-    public function withApplicationParcelTypeCode($ApplicationParcelTypeCode)
+    public function withApplicationParcelTypeCode(string $ApplicationParcelTypeCode): Parcel
     {
         $new = clone $this;
         $new->ApplicationParcelTypeCode = $ApplicationParcelTypeCode;
@@ -207,7 +215,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getApplicationParcelImportanceCode()
+    public function getApplicationParcelImportanceCode(): string
     {
         return $this->ApplicationParcelImportanceCode;
     }
@@ -216,7 +224,7 @@ class Parcel
      * @param string $ApplicationParcelImportanceCode
      * @return Parcel
      */
-    public function withApplicationParcelImportanceCode($ApplicationParcelImportanceCode)
+    public function withApplicationParcelImportanceCode(string $ApplicationParcelImportanceCode): Parcel
     {
         $new = clone $this;
         $new->ApplicationParcelImportanceCode = $ApplicationParcelImportanceCode;
@@ -227,7 +235,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getComment()
+    public function getComment(): string
     {
         return $this->Comment;
     }
@@ -236,7 +244,7 @@ class Parcel
      * @param string $Comment
      * @return Parcel
      */
-    public function withComment($Comment)
+    public function withComment(string $Comment): Parcel
     {
         $new = clone $this;
         $new->Comment = $Comment;
@@ -256,7 +264,7 @@ class Parcel
      * @param float $Price
      * @return Parcel
      */
-    public function withPrice($Price)
+    public function withPrice(float $Price): Parcel
     {
         $new = clone $this;
         $new->Price = $Price;
@@ -267,7 +275,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getApplicationParcelStatusCode()
+    public function getApplicationParcelStatusCode(): string
     {
         return $this->ApplicationParcelStatusCode;
     }
@@ -276,7 +284,7 @@ class Parcel
      * @param string $ApplicationParcelStatusCode
      * @return Parcel
      */
-    public function withApplicationParcelStatusCode($ApplicationParcelStatusCode)
+    public function withApplicationParcelStatusCode(string $ApplicationParcelStatusCode): Parcel
     {
         $new = clone $this;
         $new->ApplicationParcelStatusCode = $ApplicationParcelStatusCode;
@@ -285,18 +293,18 @@ class Parcel
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\Addressee
+     * @return Addressee
      */
-    public function getAddressee()
+    public function getAddressee(): Addressee
     {
         return $this->Addressee;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\Addressee $Addressee
+     * @param Addressee $Addressee
      * @return Parcel
      */
-    public function withAddressee($Addressee)
+    public function withAddressee(Addressee $Addressee): Parcel
     {
         $new = clone $this;
         $new->Addressee = $Addressee;
@@ -305,18 +313,18 @@ class Parcel
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\Address
+     * @return Address
      */
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->Address;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\Address $Address
+     * @param Address $Address
      * @return Parcel
      */
-    public function withAddress($Address)
+    public function withAddress(Address $Address): Parcel
     {
         $new = clone $this;
         $new->Address = $Address;
@@ -325,18 +333,18 @@ class Parcel
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\ContactPerson
+     * @return ContactPerson
      */
-    public function getContactPerson()
+    public function getContactPerson(): ContactPerson
     {
         return $this->ContactPerson;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\ContactPerson $ContactPerson
+     * @param ContactPerson $ContactPerson
      * @return Parcel
      */
-    public function withContactPerson($ContactPerson)
+    public function withContactPerson(ContactPerson $ContactPerson): Parcel
     {
         $new = clone $this;
         $new->ContactPerson = $ContactPerson;
@@ -347,7 +355,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getMaxDimension()
+    public function getMaxDimension(): string
     {
         return $this->MaxDimension;
     }
@@ -356,7 +364,7 @@ class Parcel
      * @param string $MaxDimension
      * @return Parcel
      */
-    public function withMaxDimension($MaxDimension)
+    public function withMaxDimension(string $MaxDimension): Parcel
     {
         $new = clone $this;
         $new->MaxDimension = $MaxDimension;
@@ -367,7 +375,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getNumber()
+    public function getNumber(): string
     {
         return $this->Number;
     }
@@ -376,7 +384,7 @@ class Parcel
      * @param string $Number
      * @return Parcel
      */
-    public function withNumber($Number)
+    public function withNumber(string $Number): Parcel
     {
         $new = clone $this;
         $new->Number = $Number;
@@ -396,7 +404,7 @@ class Parcel
      * @param float $NalPlatezhSum
      * @return Parcel
      */
-    public function withNalPlatezhSum($NalPlatezhSum)
+    public function withNalPlatezhSum(float $NalPlatezhSum): Parcel
     {
         $new = clone $this;
         $new->NalPlatezhSum = $NalPlatezhSum;
@@ -407,7 +415,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getSalesOrderNumber()
+    public function getSalesOrderNumber(): string
     {
         return $this->SalesOrderNumber;
     }
@@ -416,7 +424,7 @@ class Parcel
      * @param string $SalesOrderNumber
      * @return Parcel
      */
-    public function withSalesOrderNumber($SalesOrderNumber)
+    public function withSalesOrderNumber(string $SalesOrderNumber): Parcel
     {
         $new = clone $this;
         $new->SalesOrderNumber = $SalesOrderNumber;
@@ -427,7 +435,7 @@ class Parcel
     /**
      * @return string
      */
-    public function getCustomerNumber()
+    public function getCustomerNumber(): string
     {
         return $this->CustomerNumber;
     }
@@ -436,7 +444,7 @@ class Parcel
      * @param string $CustomerNumber
      * @return Parcel
      */
-    public function withCustomerNumber($CustomerNumber)
+    public function withCustomerNumber(string $CustomerNumber): Parcel
     {
         $new = clone $this;
         $new->CustomerNumber = $CustomerNumber;
@@ -456,7 +464,7 @@ class Parcel
      * @param float $Length
      * @return Parcel
      */
-    public function withLength($Length)
+    public function withLength(float $Length): Parcel
     {
         $new = clone $this;
         $new->Length = $Length;
@@ -476,7 +484,7 @@ class Parcel
      * @param float $Width
      * @return Parcel
      */
-    public function withWidth($Width)
+    public function withWidth(float $Width): Parcel
     {
         $new = clone $this;
         $new->Width = $Width;
@@ -496,7 +504,7 @@ class Parcel
      * @param float $Height
      * @return Parcel
      */
-    public function withHeight($Height)
+    public function withHeight(float $Height): Parcel
     {
         $new = clone $this;
         $new->Height = $Height;
