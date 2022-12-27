@@ -24,11 +24,11 @@ class ChangeID implements RequestInterface
     /**
      * Constructor
      *
-     * @var string $ContractGUID
-     * @var string $Login
-     * @var string $Password
+     * @param string|null $ContractGUID
+     * @param string|null $Login
+     * @param string|null $Password
      */
-    public function __construct($ContractGUID, $Login, $Password)
+    public function __construct(string $ContractGUID = null, string $Login = null, string $Password = null)
     {
         $this->ContractGUID = $ContractGUID;
         $this->Login = $Login;
@@ -38,7 +38,7 @@ class ChangeID implements RequestInterface
     /**
      * @return string
      */
-    public function getContractGUID()
+    public function getContractGUID(): string
     {
         return $this->ContractGUID;
     }
@@ -47,7 +47,7 @@ class ChangeID implements RequestInterface
      * @param string $ContractGUID
      * @return ChangeID
      */
-    public function withContractGUID($ContractGUID)
+    public function withContractGUID(string $ContractGUID): ChangeID
     {
         $new = clone $this;
         $new->ContractGUID = $ContractGUID;
@@ -58,7 +58,7 @@ class ChangeID implements RequestInterface
     /**
      * @return string
      */
-    public function getLogin()
+    public function getLogin(): string
     {
         return $this->Login;
     }
@@ -67,7 +67,7 @@ class ChangeID implements RequestInterface
      * @param string $Login
      * @return ChangeID
      */
-    public function withLogin($Login)
+    public function withLogin(string $Login): ChangeID
     {
         $new = clone $this;
         $new->Login = $Login;
@@ -78,7 +78,7 @@ class ChangeID implements RequestInterface
     /**
      * @return string
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->Password;
     }
@@ -87,7 +87,7 @@ class ChangeID implements RequestInterface
      * @param string $Password
      * @return ChangeID
      */
-    public function withPassword($Password)
+    public function withPassword(string $Password): ChangeID
     {
         $new = clone $this;
         $new->Password = $Password;

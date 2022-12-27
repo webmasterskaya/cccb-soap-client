@@ -10,6 +10,7 @@ use Webmasterskaya\Soap\Base\Exception\SoapException;
 use Webmasterskaya\Soap\Base\Soap\Metadata\MetadataOptions;
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 use Webmasterskaya\Soap\Base\Type\ResultInterface;
+use Webmasterskaya\Soap\CCCB\Type\ChangeIDResponse;
 
 class CccbClient extends ClientAbstract
 {
@@ -179,13 +180,15 @@ class CccbClient extends ClientAbstract
     /**
      * ???
      *
-     * @param RequestInterface|Type\ChangeID $parameters
-     * @return ResultInterface|Type\ChangeIDResponse
-     * @throws SoapException
+     * @param string|null $Login
+     * @param string|null $Password
+     * @return ResultInterface|ChangeIDResponse
      */
-    public function changeID(Type\ChangeID $parameters): Type\ChangeIDResponse
-    {
-        return $this->call('ChangeID', $parameters);
+    public function changeID(
+        string $Login = null,
+        string $Password = null
+    ): Type\ChangeIDResponse {
+        return $this->call('ChangeID', new Type\ChangeID($this->getContractGUID(), $Login, $Password));
     }
 
     /**
