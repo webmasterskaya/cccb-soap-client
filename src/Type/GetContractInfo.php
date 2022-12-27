@@ -4,19 +4,44 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 
-class GetContractInfo implements RequestInterface, ContractGuidAwareInterface
+/**
+ * Метод WEB-сервиса возвращает информацию о принятых за последние 3 месяца отправлениях по договору.
+ */
+class GetContractInfo implements RequestInterface
 {
+    /**
+     * @var string Уникальный идентификатор договора
+     */
+    private $ContractGUID;
 
-	use ContractGuidAwareTrait;
+    /**
+     * Constructor
+     *
+     * @var string $ContractGUID
+     */
+    public function __construct(string $ContractGUID)
+    {
+        $this->ContractGUID = $ContractGUID;
+    }
 
-	/**
-	 * Constructor
-	 *
-	 * @var string $ContractGUID
-	 */
-	public function __construct($ContractGUID)
-	{
-		$this->ContractGUID = $ContractGUID;
-	}
+    /**
+     * @return string
+     */
+    public function getContractGUID(): string
+    {
+        return $this->ContractGUID;
+    }
+
+    /**
+     * @param string $ContractGUID
+     * @return GetContractInfo
+     */
+    public function withContractGUID(string $ContractGUID): GetContractInfo
+    {
+        $new = clone $this;
+        $new->ContractGUID = $ContractGUID;
+
+        return $new;
+    }
 }
 

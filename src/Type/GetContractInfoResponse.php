@@ -2,32 +2,33 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class GetContractInfoResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class GetContractInfoResponse implements ResultInterface
 {
-	/**
-	 * @var   ResultOfContractInfo
-	 */
-	private $return;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfContractInfo
+     */
+    private $return;
 
-	/**
-	 * @return   ResultOfContractInfo
-	 */
-	public function getReturn()
-	{
-		return $this->return;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfContractInfo
+     */
+    public function getReturn()
+    {
+        return $this->return;
+    }
 
-	/**
-	 * @param   ResultOfContractInfo  $return
-	 *
-	 * @return GetContractInfoResponse
-	 */
-	public function withReturn($return)
-	{
-		$new         = clone $this;
-		$new->return = $return;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfContractInfo $return
+     * @return GetContractInfoResponse
+     */
+    public function withReturn($return)
+    {
+        $new = clone $this;
+        $new->return = $return;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

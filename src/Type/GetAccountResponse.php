@@ -2,32 +2,33 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class GetAccountResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class GetAccountResponse implements ResultInterface
 {
-	/**
-	 * @var   ResultOfGetAccount
-	 */
-	private $return;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfGetAccount
+     */
+    private $return;
 
-	/**
-	 * @return   ResultOfGetAccount
-	 */
-	public function getReturn()
-	{
-		return $this->return;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfGetAccount
+     */
+    public function getReturn()
+    {
+        return $this->return;
+    }
 
-	/**
-	 * @param   ResultOfGetAccount  $return
-	 *
-	 * @return GetAccountResponse
-	 */
-	public function withReturn($return)
-	{
-		$new         = clone $this;
-		$new->return = $return;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfGetAccount $return
+     * @return GetAccountResponse
+     */
+    public function withReturn($return)
+    {
+        $new = clone $this;
+        $new->return = $return;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

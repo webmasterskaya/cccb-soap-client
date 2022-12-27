@@ -2,32 +2,33 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class UploadFileResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class UploadFileResponse implements ResultInterface
 {
-	/**
-	 * @var   ResultOfOperation
-	 */
-	private $return;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfOperation
+     */
+    private $return;
 
-	/**
-	 * @return   ResultOfOperation
-	 */
-	public function getReturn()
-	{
-		return $this->return;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfOperation
+     */
+    public function getReturn()
+    {
+        return $this->return;
+    }
 
-	/**
-	 * @param   ResultOfOperation  $return
-	 *
-	 * @return UploadFileResponse
-	 */
-	public function withReturn($return)
-	{
-		$new         = clone $this;
-		$new->return = $return;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfOperation $return
+     * @return UploadFileResponse
+     */
+    public function withReturn($return)
+    {
+        $new = clone $this;
+        $new->return = $return;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

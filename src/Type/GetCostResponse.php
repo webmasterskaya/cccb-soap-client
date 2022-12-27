@@ -2,32 +2,33 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class GetCostResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class GetCostResponse implements ResultInterface
 {
-	/**
-	 * @var   ResultOfGetCost
-	 */
-	private $return;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfGetCost
+     */
+    private $return;
 
-	/**
-	 * @return   ResultOfGetCost
-	 */
-	public function getReturn()
-	{
-		return $this->return;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfGetCost
+     */
+    public function getReturn()
+    {
+        return $this->return;
+    }
 
-	/**
-	 * @param   ResultOfGetCost  $return
-	 *
-	 * @return GetCostResponse
-	 */
-	public function withReturn($return)
-	{
-		$new         = clone $this;
-		$new->return = $return;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfGetCost $return
+     * @return GetCostResponse
+     */
+    public function withReturn($return)
+    {
+        $new = clone $this;
+        $new->return = $return;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

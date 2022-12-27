@@ -2,32 +2,33 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class RegistrationResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class RegistrationResponse implements ResultInterface
 {
-	/**
-	 * @var   ResultOfRegistration
-	 */
-	private $return;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfRegistration
+     */
+    private $return;
 
-	/**
-	 * @return   ResultOfRegistration
-	 */
-	public function getReturn()
-	{
-		return $this->return;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfRegistration
+     */
+    public function getReturn()
+    {
+        return $this->return;
+    }
 
-	/**
-	 * @param   ResultOfRegistration  $return
-	 *
-	 * @return RegistrationResponse
-	 */
-	public function withReturn($return)
-	{
-		$new         = clone $this;
-		$new->return = $return;
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfRegistration $return
+     * @return RegistrationResponse
+     */
+    public function withReturn($return)
+    {
+        $new = clone $this;
+        $new->return = $return;
 
-		return $new;
-	}
+        return $new;
+    }
 }
 

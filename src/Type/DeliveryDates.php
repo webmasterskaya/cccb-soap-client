@@ -4,131 +4,149 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 
-class DeliveryDates implements RequestInterface, ContractGuidAwareInterface
+class DeliveryDates implements RequestInterface
 {
+    /**
+     * @var string
+     */
+    private $ContractGUID;
 
-	use ContractGuidAwareTrait;
+    /**
+     * @var \DateTimeInterface
+     */
+    private $DateSending;
 
-	/**
-	 * @var \DateTimeInterface
-	 */
-	private $DateSending;
+    /**
+     * @var string
+     */
+    private $UrgencyCode;
 
-	/**
-	 * @var string
-	 */
-	private $UrgencyCode;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\AddressShort
+     */
+    private $AddressFrom;
 
-	/**
-	 * @var   AddressShort
-	 */
-	private $AddressFrom;
+    /**
+     * @var \Webmasterskaya\Soap\CCCB\Type\AddressShort
+     */
+    private $AddressTo;
 
-	/**
-	 * @var   AddressShort
-	 */
-	private $AddressTo;
+    /**
+     * Constructor
+     *
+     * @var string $ContractGUID
+     * @var \DateTimeInterface $DateSending
+     * @var string $UrgencyCode
+     * @var \Webmasterskaya\Soap\CCCB\Type\AddressShort $AddressFrom
+     * @var \Webmasterskaya\Soap\CCCB\Type\AddressShort $AddressTo
+     */
+    public function __construct($ContractGUID, $DateSending, $UrgencyCode, $AddressFrom, $AddressTo)
+    {
+        $this->ContractGUID = $ContractGUID;
+        $this->DateSending = $DateSending;
+        $this->UrgencyCode = $UrgencyCode;
+        $this->AddressFrom = $AddressFrom;
+        $this->AddressTo = $AddressTo;
+    }
 
-	/**
-	 * Constructor
-	 *
-	 * @var string             $ContractGUID
-	 * @var \DateTimeInterface $DateSending
-	 * @var string             $UrgencyCode
-	 * @var   AddressShort     $AddressFrom
-	 * @var   AddressShort     $AddressTo
-	 */
-	public function __construct($ContractGUID, $DateSending, $UrgencyCode, $AddressFrom, $AddressTo)
-	{
-		$this->ContractGUID = $ContractGUID;
-		$this->DateSending  = $DateSending;
-		$this->UrgencyCode  = $UrgencyCode;
-		$this->AddressFrom  = $AddressFrom;
-		$this->AddressTo    = $AddressTo;
-	}
+    /**
+     * @return string
+     */
+    public function getContractGUID()
+    {
+        return $this->ContractGUID;
+    }
 
-	/**
-	 * @return \DateTimeInterface
-	 */
-	public function getDateSending()
-	{
-		return $this->DateSending;
-	}
+    /**
+     * @param string $ContractGUID
+     * @return DeliveryDates
+     */
+    public function withContractGUID($ContractGUID)
+    {
+        $new = clone $this;
+        $new->ContractGUID = $ContractGUID;
 
-	/**
-	 * @param   \DateTimeInterface  $DateSending
-	 *
-	 * @return DeliveryDates
-	 */
-	public function withDateSending($DateSending)
-	{
-		$new              = clone $this;
-		$new->DateSending = $DateSending;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getDateSending()
+    {
+        return $this->DateSending;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getUrgencyCode()
-	{
-		return $this->UrgencyCode;
-	}
+    /**
+     * @param \DateTimeInterface $DateSending
+     * @return DeliveryDates
+     */
+    public function withDateSending($DateSending)
+    {
+        $new = clone $this;
+        $new->DateSending = $DateSending;
 
-	/**
-	 * @param   string  $UrgencyCode
-	 *
-	 * @return DeliveryDates
-	 */
-	public function withUrgencyCode($UrgencyCode)
-	{
-		$new              = clone $this;
-		$new->UrgencyCode = $UrgencyCode;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return string
+     */
+    public function getUrgencyCode()
+    {
+        return $this->UrgencyCode;
+    }
 
-	/**
-	 * @return   AddressShort
-	 */
-	public function getAddressFrom()
-	{
-		return $this->AddressFrom;
-	}
+    /**
+     * @param string $UrgencyCode
+     * @return DeliveryDates
+     */
+    public function withUrgencyCode($UrgencyCode)
+    {
+        $new = clone $this;
+        $new->UrgencyCode = $UrgencyCode;
 
-	/**
-	 * @param   AddressShort  $AddressFrom
-	 *
-	 * @return DeliveryDates
-	 */
-	public function withAddressFrom($AddressFrom)
-	{
-		$new              = clone $this;
-		$new->AddressFrom = $AddressFrom;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\AddressShort
+     */
+    public function getAddressFrom()
+    {
+        return $this->AddressFrom;
+    }
 
-	/**
-	 * @return   AddressShort
-	 */
-	public function getAddressTo()
-	{
-		return $this->AddressTo;
-	}
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\AddressShort $AddressFrom
+     * @return DeliveryDates
+     */
+    public function withAddressFrom($AddressFrom)
+    {
+        $new = clone $this;
+        $new->AddressFrom = $AddressFrom;
 
-	/**
-	 * @param   AddressShort  $AddressTo
-	 *
-	 * @return DeliveryDates
-	 */
-	public function withAddressTo($AddressTo)
-	{
-		$new            = clone $this;
-		$new->AddressTo = $AddressTo;
+        return $new;
+    }
 
-		return $new;
-	}
+    /**
+     * @return \Webmasterskaya\Soap\CCCB\Type\AddressShort
+     */
+    public function getAddressTo()
+    {
+        return $this->AddressTo;
+    }
+
+    /**
+     * @param \Webmasterskaya\Soap\CCCB\Type\AddressShort $AddressTo
+     * @return DeliveryDates
+     */
+    public function withAddressTo($AddressTo)
+    {
+        $new = clone $this;
+        $new->AddressTo = $AddressTo;
+
+        return $new;
+    }
 }
 

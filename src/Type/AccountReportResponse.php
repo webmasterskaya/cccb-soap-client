@@ -2,15 +2,17 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
-class AccountReportResponse implements CccbResponseInterface
+use Webmasterskaya\Soap\Base\Type\ResultInterface;
+
+class AccountReportResponse implements ResultInterface
 {
     /**
-     * @var   ResultOfAccountReport
+     * @var \Webmasterskaya\Soap\CCCB\Type\ResultOfAccountReport
      */
     private $return;
 
     /**
-     * @return   ResultOfAccountReport
+     * @return \Webmasterskaya\Soap\CCCB\Type\ResultOfAccountReport
      */
     public function getReturn()
     {
@@ -18,8 +20,7 @@ class AccountReportResponse implements CccbResponseInterface
     }
 
     /**
-     * @param ResultOfAccountReport $return
-     *
+     * @param \Webmasterskaya\Soap\CCCB\Type\ResultOfAccountReport $return
      * @return AccountReportResponse
      */
     public function withReturn($return)

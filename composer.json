@@ -1,17 +1,22 @@
 {
-	"autoload": {
-		"psr-4": {
-			"Webmasterskaya\\Soap\\CCCB\\": "src/"
-		}
-	},
-	"require": {
-		"webmasterskaya/base-soap-lib": "dev-master"
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:webmasterskaya/base-soap-lib"
-		}
-	],
-	"minimum-stability": "dev"
+  "name": "webmasterskaya/cccb-soap-client",
+  "description": "PHP-SOAP клиент для работы с web-сервисами ЕДИНОЙ ИНФОРМАЦИОННОЙ СИСТЕМЫ «Спецсвязь» (ЕИС «Спецсвязь»)",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Webmasterskaya\\Soap\\CCCB\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Artem Vasilev",
+      "email": "dev@webmasterskaya.xyz"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "webmasterskaya/base-soap-lib": "~0.0.1",
+    "symfony/options-resolver": "^4.4"
+  }
 }
