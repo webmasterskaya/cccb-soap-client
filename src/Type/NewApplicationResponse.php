@@ -23,7 +23,7 @@ class NewApplicationResponse implements ResultInterface
      * @param ResultOfNewApplication $return
      * @return NewApplicationResponse
      */
-    public function withReturn($return): NewApplicationResponse
+    public function withReturn(ResultOfNewApplication $return): NewApplicationResponse
     {
         $new = clone $this;
         $new->return = $return;
