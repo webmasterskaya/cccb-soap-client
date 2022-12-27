@@ -2,6 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB;
 
+use DateTimeInterface;
 use Soap\Engine\Transport;
 use Soap\ExtSoapEngine\ExtSoapOptions;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,16 +18,12 @@ use Webmasterskaya\Soap\CCCB\Type\ChangeIDResponse;
 class CccbClient extends ClientAbstract
 {
     /**
-     * Идентификатор договора контрагента СпецСвязи
-     *
-     * @var string;
+     * @var string Идентификатор договора контрагента СпецСвязи
      */
     protected $contractGuid;
 
     /**
-     * Идентификатор услуги СпецСвязи
-     *
-     * @var string
+     * @var string Идентификатор услуги СпецСвязи
      */
     protected $serviceGuid;
 
@@ -135,27 +132,13 @@ class CccbClient extends ClientAbstract
      */
     public function prob(): Type\ProbResponse
     {
-        return $this->call('Prob', new Type\Prob());
+        return $this->call(
+            'Prob',
+            new Type\Prob());
     }
 
     /**
-     * ??? Регистрация пользователя ЛК Спецсвязи
-     *
-     * @return ResultInterface|Type\RegistrationResponse
-     * @throws SoapException
-     */
-    public function registration(
-        string $INN = null,
-        string $KPP = null,
-        string $contractNumber = null,
-        string $login = null,
-        string $eMail = null
-    ): Type\RegistrationResponse {
-        return $this->call('Registration', new Type\Registration($INN, $KPP, $contractNumber, $login, $eMail));
-    }
-
-    /**
-     * Метод создаёт новую заявку на отправление и возвращает параметры созданной заявки
+     * Метод создаёт новую заявку на отправление в ЕИС и возвращает параметры созданной заявки
      *
      * @param Type\Application $application Заявка на отправление
      * @param string|null $correctionApplication GUID заявки, если нужно скорректировать уже существующую заявку
@@ -172,11 +155,184 @@ class CccbClient extends ClientAbstract
     ): Type\NewApplicationResponse {
         return $this->call(
             'NewApplication',
-            new Type\NewApplication(
-                $application
-                    ->withContractGUID($this->getContractGUID())
-                    ->withServiceGUID($this->getServiceGUID()),
+            new Type\NewApplication($application
+                ->withContractGUID($this->getContractGUID())
+                ->withServiceGUID($this->getServiceGUID()),
                 $correctionApplication));
+    }
+
+    /**
+     * Метод возвращает информацию об отправлении с указанным приемным номером.
+     *
+     * @param string $ParcelNumber Приемный номер отправления
+     *
+     * @return ResultInterface|Type\GetParcelInfoResponse
+     *
+     * @throws SoapException
+     *
+     * @see Type\GetParcelInfo
+     */
+    public function getParcelInfo(string $ParcelNumber): Type\GetParcelInfoResponse
+    {
+        return $this->call(
+            'GetParcelInfo',
+            new Type\GetParcelInfo($this->getContractGuid(), $ParcelNumber));
+    }
+
+    /**
+     * ??? Регистрация пользователя ЛК Спецсвязи
+     *
+     * @return ResultInterface|Type\RegistrationResponse
+     * @throws SoapException
+     */
+    public function registration(
+        string $INN = null,
+        string $KPP = null,
+        string $contractNumber = null,
+        string $login = null,
+        string $eMail = null
+    ): Type\RegistrationResponse {
+        return $this->call(
+            'Registration',
+            new Type\Registration($INN, $KPP, $contractNumber, $login, $eMail));
+    }
+
+    /**
+     * Метод возвращает рассчитанную стоимость доставки отправления
+     *
+     * @param Type\CostingOptions $CostingOptions Параметры расчета
+     *
+     * @return ResultInterface|Type\GetCostResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\GetCost
+     */
+    public function getCost(Type\CostingOptions $CostingOptions): Type\GetCostResponse
+    {
+        return $this->call(
+            'GetCost',
+            new Type\GetCost($CostingOptions
+                ->withContractGUID($this->getContractGUID())));
+    }
+
+    /**
+     * Метод возвращает информацию о принятых отправлениях договора за последние 3 месяца.
+     *
+     * @return ResultInterface|Type\DetailedAccountReportResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\DetailedAccountReport
+     */
+    public function detailedAccountReport(): Type\DetailedAccountReportResponse
+    {
+        return $this->call(
+            'DetailedAccountReport',
+            new Type\DetailedAccountReport($this->getContractGuid()));
+    }
+
+    /**
+     * Метод отменяет заявку на отправление в ЕИС
+     *
+     * @param string $ApplicationGUID Уникальный идентификатор документа заявки
+     *
+     * @return ResultInterface|Type\CancelApplicationResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\CancelApplication
+     */
+    public function cancelApplication(string $ApplicationGUID): Type\CancelApplicationResponse
+    {
+        return $this->call(
+            'CancelApplication',
+            new Type\CancelApplication($ApplicationGUID));
+    }
+
+    /**
+     * Метод возвращает информацию об УСС, который обслуживает адрес, переданный в качестве входного параметра.
+     *
+     * @param Address $AddressInfo Адрес для проверки
+     *
+     * @return ResultInterface|AutomatizationInfoResponse
+     *
+     * @throws SoapException
+     *
+     * @see \Webmasterskaya\Soap\CCCB\Type\AutomatizationInfo
+     */
+    public function automatizationInfo(Type\Address $AddressInfo): Type\AutomatizationInfoResponse
+    {
+        return $this->call(
+            'AutomatizationInfo',
+            new Type\AutomatizationInfo($AddressInfo));
+    }
+
+    /**
+     * Метод возвращает характеристики отправления и всю историю событий по этому отправлению.
+     *
+     * @param string $ParcelNumber Номер отправления, для которого запрашивается информация
+     *
+     * @return ResultInterface|Type\GetParcelHistoryResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\GetParcelHistory
+     */
+    public function getParcelHistory(string $ParcelNumber): Type\GetParcelHistoryResponse
+    {
+        return $this->call(
+            'GetParcelHistory',
+            new Type\GetParcelHistory($ParcelNumber, $this->getContractGuid()));
+    }
+
+    /**
+     * Метод записывает в базу ЕИС характеристики отправления.
+     *
+     * @param string $ParcelNumber Приемный номер отправления
+     * @param Type\Parcel $ParcelCharacteristics Характеристики отправления
+     *
+     * @return ResultInterface|Type\WriteParcelCharacteristicsResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\WriteParcelCharacteristics
+     */
+    public function writeParcelCharacteristics(
+        string $ParcelNumber,
+        Type\Parcel $ParcelCharacteristics
+    ): Type\WriteParcelCharacteristicsResponse {
+        return $this->call(
+            'WriteParcelCharacteristics',
+            new Type\WriteParcelCharacteristics($this->getContractGuid(), $ParcelNumber, $ParcelCharacteristics));
+    }
+
+    /**
+     * Метод возвращает информацию о принятых за последние 3 месяца отправлениях по договору.
+     *
+     * @return ResultInterface|Type\GetContractInfoResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\GetContractInfo
+     */
+    public function getContractInfo(): Type\GetContractInfoResponse
+    {
+        return $this->call(
+            'GetContractInfo',
+            new Type\GetContractInfo($this->getContractGuid()));
+    }
+
+    /**
+     * Метод возвращает информацию по отправлениям из реестра Ф1.
+     *
+     * @param string $Number Номер реестра Ф1
+     * @param DateTimeInterface $Date
+     *
+     * @return ResultInterface|Type\GetF1InfoResponse
+     *
+     * @throws SoapException
+     * @see \Webmasterskaya\Soap\CCCB\Type\GetF1Info
+     */
+    public function getF1Info(string $Number, DateTimeInterface $Date): Type\GetF1InfoResponse
+    {
+        return $this->call(
+            'GetF1Info',
+            new Type\GetF1Info($Number, $Date, $this->getContractGuid()));
     }
 
     /**
@@ -193,43 +349,10 @@ class CccbClient extends ClientAbstract
         return $this->call('ChangeID', new Type\ChangeID($this->getContractGUID(), $Login, $Password));
     }
 
-    /**
-     * @param RequestInterface|Type\GetF1Info $parameters
-     * @return ResultInterface|Type\GetF1InfoResponse
-     * @throws SoapException
-     */
-    public function getF1Info(Type\GetF1Info $parameters): Type\GetF1InfoResponse
-    {
-        return $this->call('GetF1Info', $parameters);
-    }
 
     /**
-     * Метод возвращает информацию об отправлении с указанным приемным номером.
+     * ???
      *
-     * @param string $ParcelNumber Приемный номер отправления
-     *
-     * @return ResultInterface|Type\GetParcelInfoResponse
-     *
-     * @throws SoapException
-     *
-     * @see Type\GetParcelInfo
-     */
-    public function getParcelInfo(string $ParcelNumber): Type\GetParcelInfoResponse
-    {
-        return $this->call('GetParcelInfo', new Type\GetParcelInfo($this->getContractGuid(), $ParcelNumber));
-    }
-
-    /**
-     * @param RequestInterface|Type\GetContractInfo $parameters
-     * @return ResultInterface|Type\GetContractInfoResponse
-     * @throws SoapException
-     */
-    public function getContractInfo(Type\GetContractInfo $parameters): Type\GetContractInfoResponse
-    {
-        return $this->call('GetContractInfo', $parameters);
-    }
-
-    /**
      * @param RequestInterface|Type\AccountReport $parameters
      * @return ResultInterface|Type\AccountReportResponse
      * @throws SoapException
@@ -239,53 +362,10 @@ class CccbClient extends ClientAbstract
         return $this->call('AccountReport', $parameters);
     }
 
-    /**
-     * @param RequestInterface|Type\DetailedAccountReport $parameters
-     * @return ResultInterface|Type\DetailedAccountReportResponse
-     * @throws SoapException
-     */
-    public function detailedAccountReport(Type\DetailedAccountReport $parameters
-    ): Type\DetailedAccountReportResponse {
-        return $this->call('DetailedAccountReport', $parameters);
-    }
 
     /**
-     * @param RequestInterface|Type\GetCost $parameters
-     * @return ResultInterface|Type\GetCostResponse
-     * @throws SoapException
-     */
-    public function getCost(Type\GetCost $parameters): Type\GetCostResponse
-    {
-        return $this->call('GetCost', $parameters);
-    }
-
-    /**
-     * @param RequestInterface|Type\CancelApplication $parameters
-     * @return ResultInterface|Type\CancelApplicationResponse
-     * @throws SoapException
-     */
-    public function cancelApplication(Type\CancelApplication $parameters
-    ): Type\CancelApplicationResponse {
-        return $this->call('CancelApplication', $parameters);
-    }
-
-    /**
-     * Метод возвращает информацию об УСС, который обслуживает адрес, переданный в качестве входного параметра.
+     * ???
      *
-     * @param Address $AddressInfo Адрес для проверки
-     *
-     * @return ResultInterface|AutomatizationInfoResponse
-     *
-     * @throws SoapException
-     *
-     * @see Type\AutomatizationInfo
-     */
-    public function automatizationInfo(Type\Address $AddressInfo): Type\AutomatizationInfoResponse
-    {
-        return $this->call('AutomatizationInfo', new Type\AutomatizationInfo($AddressInfo));
-    }
-
-    /**
      * @param RequestInterface|Type\GetIDParcel $parameters
      * @return ResultInterface|Type\GetIDParcelResponse
      * @throws SoapException
@@ -295,27 +375,10 @@ class CccbClient extends ClientAbstract
         return $this->call('GetIDParcel', $parameters);
     }
 
-    /**
-     * @param RequestInterface|Type\WriteParcelCharacteristics $parameters
-     * @return ResultInterface|Type\WriteParcelCharacteristicsResponse
-     * @throws SoapException
-     */
-    public function writeParcelCharacteristics(Type\WriteParcelCharacteristics $parameters
-    ): Type\WriteParcelCharacteristicsResponse {
-        return $this->call('WriteParcelCharacteristics', $parameters);
-    }
 
     /**
-     * @param RequestInterface|Type\GetParcelHistory $parameters
-     * @return ResultInterface|Type\GetParcelHistoryResponse
-     * @throws SoapException
-     */
-    public function getParcelHistory(Type\GetParcelHistory $parameters): Type\GetParcelHistoryResponse
-    {
-        return $this->call('GetParcelHistory', $parameters);
-    }
-
-    /**
+     * ???
+     *
      * @param RequestInterface|Type\GetReportOnContract $parameters
      * @return ResultInterface|Type\GetReportOnContractResponse
      * @throws SoapException
@@ -326,6 +389,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\GetAccount $parameters
      * @return ResultInterface|Type\GetAccountResponse
      * @throws SoapException
@@ -336,6 +401,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\IsApplicationInControlList $parameters
      * @return ResultInterface|Type\IsApplicationInControlListResponse
      * @throws SoapException
@@ -346,6 +413,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\UpdateApplication $parameters
      * @return ResultInterface|Type\UpdateApplicationResponse
      * @throws SoapException
@@ -356,6 +425,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\GetCostStandart $parameters
      * @return ResultInterface|Type\GetCostStandartResponse
      * @throws SoapException
@@ -366,6 +437,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\GetParcelsStatuses $parameters
      * @return ResultInterface|Type\GetParcelsStatusesResponse
      * @throws SoapException
@@ -376,6 +449,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\GetContractProps $parameters
      * @return ResultInterface|Type\GetContractPropsResponse
      * @throws SoapException
@@ -386,6 +461,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\SetAllApplicationTrigger $parameters
      * @return ResultInterface|Type\SetAllApplicationTriggerResponse
      * @throws SoapException
@@ -396,6 +473,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\UploadFile $parameters
      * @return ResultInterface|Type\UploadFileResponse
      * @throws SoapException
@@ -406,6 +485,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\DeliveryDates $parameters
      * @return ResultInterface|Type\DeliveryDatesResponse
      * @throws SoapException
@@ -416,6 +497,8 @@ class CccbClient extends ClientAbstract
     }
 
     /**
+     * ???
+     *
      * @param RequestInterface|Type\IsAdmitDateCorrect $parameters
      * @return ResultInterface|Type\IsAdmitDateCorrectResponse
      * @throws SoapException
