@@ -4,7 +4,19 @@ namespace Webmasterskaya\Soap\CCCB\Constants;
 
 final class TYPE
 {
-	const METIZ = 'Metiz'; // Упаковка
-	const PACKAGE = 'Package'; // Пакет
-	const PARCEL = 'Parcel'; // Посылка
+    /**
+     * @var string Упаковка
+     */
+    const METIZ = 'Metiz';
+
+    /**
+     * @var string Пакет
+     */
+    const PACKAGE = 'Package';
+
+    /**
+     * @var string Посылка
+     */
+    const PARCEL = 'Parcel';
+
 }
