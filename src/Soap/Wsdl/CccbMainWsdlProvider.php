@@ -2,9 +2,7 @@
 
 namespace Webmasterskaya\Soap\CCCB\Soap\Wsdl;
 
-use Soap\ExtSoapEngine\Wsdl\WsdlProvider;
-
-class CccbMainWsdlProvider implements WsdlProvider, CccbWsdlProviderInterface
+class CccbMainWsdlProvider implements CccbWsdlProviderInterface
 {
 
     public function __invoke(string $location): string

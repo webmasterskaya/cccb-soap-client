@@ -2,7 +2,9 @@
 
 namespace Webmasterskaya\Soap\CCCB\Soap\Wsdl;
 
-interface CccbWsdlProviderInterface
+use Soap\ExtSoapEngine\Wsdl\WsdlProvider;
+
+interface CccbWsdlProviderInterface extends WsdlProvider
 {
 
 }
