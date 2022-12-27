@@ -4,8 +4,24 @@ namespace Webmasterskaya\Soap\CCCB\Constants;
 
 final class URGENCY
 {
-	const BUSINESS = 'Business'; // Бизнес
-	const EXPRESS = 'Express'; // Экспресс
-	const IMMEDIATELY = 'Immediately'; // Срочно
-	const STANDARD = 'Standard'; // Стандарт
+    /**
+     * @var string Бизнес
+     */
+    const BUSINESS = 'Business';
+
+    /**
+     * @var string Экспресс
+     */
+    const EXPRESS = 'Express';
+
+    /**
+     * @var string Срочно
+     */
+    const IMMEDIATELY = 'Immediately';
+
+    /**
+     * @var string Стандарт
+     */
+    const STANDARD = 'Standard';
+
 }
