@@ -2,70 +2,74 @@
 
 namespace Webmasterskaya\Soap\CCCB\Type;
 
+use DateTimeInterface;
+
 class Application
 {
     /**
-     * @var string
+     * @var string Идентификатор договора контрагента. Выдается сотрниками ИТ блока ФГУП ГЦСС,
+     * в случае некоректного заполнения поля или информации в системе возможны ошибки
+     * "Не найден контрагент" или "Не найден договор"
      */
     private $ContractGUID;
 
     /**
-     * @var string
+     * @var string Идентификатор услуги (по заключенному договору). Выдается сотрниками ИТ блока ФГУП ГЦСС
      */
     private $ServiceGUID;
 
     /**
-     * @var mixed
+     * @var mixed Всегда пустое служебное поле
      */
     private $ApplicationStatusCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var DateTimeInterface Дата сбора
      */
     private $PickupDate;
 
     /**
-     * @var string
+     * @var string Время сбора "от" в формате hh:mm:ss
      */
-    private $PickupTimeFrom;
+    private $PickupTimeFrom = '00:00:00';
 
     /**
-     * @var string
+     * @var string Время сбора "до" в формате hh:mm:ss
      */
-    private $PickupTimeTo;
+    private $PickupTimeTo = '00:00:00';
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\Addressee
+     * @var Addressee Адресат сбора
      */
     private $PickupAddressee;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\Address
+     * @var Address Адрес сбора
      */
     private $PickupAddress;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\ContactPerson
+     * @var ContactPerson Информация о контактном лице отправителя
      */
     private $PickupContactPerson;
 
     /**
-     * @var bool
+     * @var bool Указание на прямую доставку
      */
-    private $IsDirect;
+    private $IsDirect = false;
 
     /**
-     * @var string
+     * @var string Комментарий к заявке
      */
     private $Comment;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\Parcel
+     * @var Parcel Описание отправления/посылки.
      */
     private $Parcels;
 
     /**
-     * @var string
+     * @var string Номер реестра Ф1
      */
     private $RegisterNumber;
 
@@ -92,7 +96,7 @@ class Application
     /**
      * @return string
      */
-    public function getContractGUID()
+    public function getContractGUID(): string
     {
         return $this->ContractGUID;
     }
@@ -101,30 +105,10 @@ class Application
      * @param string $ContractGUID
      * @return Application
      */
-    public function withContractGUID($ContractGUID)
+    public function withContractGUID(string $ContractGUID): Application
     {
         $new = clone $this;
         $new->ContractGUID = $ContractGUID;
-
-        return $new;
-    }
-
-    /**
-     * @return string
-     */
-    public function getServiceGUID()
-    {
-        return $this->ServiceGUID;
-    }
-
-    /**
-     * @param string $ServiceGUID
-     * @return Application
-     */
-    public function withServiceGUID($ServiceGUID)
-    {
-        $new = clone $this;
-        $new->ServiceGUID = $ServiceGUID;
 
         return $new;
     }
@@ -141,7 +125,7 @@ class Application
      * @param mixed $ApplicationStatusCode
      * @return Application
      */
-    public function withApplicationStatusCode($ApplicationStatusCode)
+    public function withApplicationStatusCode($ApplicationStatusCode): Application
     {
         $new = clone $this;
         $new->ApplicationStatusCode = $ApplicationStatusCode;
@@ -150,18 +134,18 @@ class Application
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    public function getPickupDate()
+    public function getPickupDate(): DateTimeInterface
     {
         return $this->PickupDate;
     }
 
     /**
-     * @param \DateTimeInterface $PickupDate
+     * @param DateTimeInterface $PickupDate
      * @return Application
      */
-    public function withPickupDate($PickupDate)
+    public function withPickupDate(DateTimeInterface $PickupDate): Application
     {
         $new = clone $this;
         $new->PickupDate = $PickupDate;
@@ -172,7 +156,7 @@ class Application
     /**
      * @return string
      */
-    public function getPickupTimeFrom()
+    public function getPickupTimeFrom(): string
     {
         return $this->PickupTimeFrom;
     }
@@ -181,7 +165,7 @@ class Application
      * @param string $PickupTimeFrom
      * @return Application
      */
-    public function withPickupTimeFrom($PickupTimeFrom)
+    public function withPickupTimeFrom(string $PickupTimeFrom): Application
     {
         $new = clone $this;
         $new->PickupTimeFrom = $PickupTimeFrom;
@@ -192,7 +176,7 @@ class Application
     /**
      * @return string
      */
-    public function getPickupTimeTo()
+    public function getPickupTimeTo(): string
     {
         return $this->PickupTimeTo;
     }
@@ -201,7 +185,7 @@ class Application
      * @param string $PickupTimeTo
      * @return Application
      */
-    public function withPickupTimeTo($PickupTimeTo)
+    public function withPickupTimeTo(string $PickupTimeTo): Application
     {
         $new = clone $this;
         $new->PickupTimeTo = $PickupTimeTo;
@@ -210,18 +194,18 @@ class Application
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\Addressee
+     * @return Addressee
      */
-    public function getPickupAddressee()
+    public function getPickupAddressee(): Addressee
     {
         return $this->PickupAddressee;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\Addressee $PickupAddressee
+     * @param Addressee $PickupAddressee
      * @return Application
      */
-    public function withPickupAddressee($PickupAddressee)
+    public function withPickupAddressee(Addressee $PickupAddressee): Application
     {
         $new = clone $this;
         $new->PickupAddressee = $PickupAddressee;
@@ -230,18 +214,18 @@ class Application
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\Address
+     * @return Address
      */
-    public function getPickupAddress()
+    public function getPickupAddress(): Address
     {
         return $this->PickupAddress;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\Address $PickupAddress
+     * @param Address $PickupAddress
      * @return Application
      */
-    public function withPickupAddress($PickupAddress)
+    public function withPickupAddress(Address $PickupAddress): Application
     {
         $new = clone $this;
         $new->PickupAddress = $PickupAddress;
@@ -250,18 +234,18 @@ class Application
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\ContactPerson
+     * @return ContactPerson
      */
-    public function getPickupContactPerson()
+    public function getPickupContactPerson(): ContactPerson
     {
         return $this->PickupContactPerson;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\ContactPerson $PickupContactPerson
+     * @param ContactPerson $PickupContactPerson
      * @return Application
      */
-    public function withPickupContactPerson($PickupContactPerson)
+    public function withPickupContactPerson(ContactPerson $PickupContactPerson): Application
     {
         $new = clone $this;
         $new->PickupContactPerson = $PickupContactPerson;
@@ -272,7 +256,7 @@ class Application
     /**
      * @return bool
      */
-    public function getIsDirect()
+    public function getIsDirect(): bool
     {
         return $this->IsDirect;
     }
@@ -281,7 +265,7 @@ class Application
      * @param bool $IsDirect
      * @return Application
      */
-    public function withIsDirect($IsDirect)
+    public function withIsDirect(bool $IsDirect): Application
     {
         $new = clone $this;
         $new->IsDirect = $IsDirect;
@@ -292,7 +276,7 @@ class Application
     /**
      * @return string
      */
-    public function getComment()
+    public function getComment(): string
     {
         return $this->Comment;
     }
@@ -301,7 +285,7 @@ class Application
      * @param string $Comment
      * @return Application
      */
-    public function withComment($Comment)
+    public function withComment(string $Comment): Application
     {
         $new = clone $this;
         $new->Comment = $Comment;
@@ -310,18 +294,18 @@ class Application
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\Parcel
+     * @return Parcel
      */
-    public function getParcels()
+    public function getParcels(): Parcel
     {
         return $this->Parcels;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\Parcel $Parcels
+     * @param Parcel $Parcels
      * @return Application
      */
-    public function withParcels($Parcels)
+    public function withParcels(Parcel $Parcels): Application
     {
         $new = clone $this;
         $new->Parcels = $Parcels;
@@ -332,7 +316,7 @@ class Application
     /**
      * @return string
      */
-    public function getRegisterNumber()
+    public function getRegisterNumber(): string
     {
         return $this->RegisterNumber;
     }
@@ -341,7 +325,7 @@ class Application
      * @param string $RegisterNumber
      * @return Application
      */
-    public function withRegisterNumber($RegisterNumber)
+    public function withRegisterNumber(string $RegisterNumber): Application
     {
         $new = clone $this;
         $new->RegisterNumber = $RegisterNumber;
@@ -352,7 +336,7 @@ class Application
     /**
      * @return string
      */
-    public function getIncomingNumber()
+    public function getIncomingNumber(): string
     {
         return $this->IncomingNumber;
     }
@@ -361,7 +345,7 @@ class Application
      * @param string $IncomingNumber
      * @return Application
      */
-    public function withIncomingNumber($IncomingNumber)
+    public function withIncomingNumber(string $IncomingNumber): Application
     {
         $new = clone $this;
         $new->IncomingNumber = $IncomingNumber;
@@ -372,7 +356,7 @@ class Application
     /**
      * @return string
      */
-    public function getAttachedFileName()
+    public function getAttachedFileName(): string
     {
         return $this->AttachedFileName;
     }
@@ -381,7 +365,7 @@ class Application
      * @param string $AttachedFileName
      * @return Application
      */
-    public function withAttachedFileName($AttachedFileName)
+    public function withAttachedFileName(string $AttachedFileName): Application
     {
         $new = clone $this;
         $new->AttachedFileName = $AttachedFileName;
@@ -392,7 +376,7 @@ class Application
     /**
      * @return bool
      */
-    public function getRoundTrip()
+    public function getRoundTrip(): bool
     {
         return $this->RoundTrip;
     }
@@ -401,7 +385,7 @@ class Application
      * @param bool $RoundTrip
      * @return Application
      */
-    public function withRoundTrip($RoundTrip)
+    public function withRoundTrip(bool $RoundTrip): Application
     {
         $new = clone $this;
         $new->RoundTrip = $RoundTrip;
@@ -412,7 +396,7 @@ class Application
     /**
      * @return bool
      */
-    public function getDangerousCargo()
+    public function getDangerousCargo(): bool
     {
         return $this->DangerousCargo;
     }
@@ -421,10 +405,30 @@ class Application
      * @param bool $DangerousCargo
      * @return Application
      */
-    public function withDangerousCargo($DangerousCargo)
+    public function withDangerousCargo(bool $DangerousCargo): Application
     {
         $new = clone $this;
         $new->DangerousCargo = $DangerousCargo;
+
+        return $new;
+    }
+
+    /**
+     * @return string
+     */
+    public function getServiceGUID(): string
+    {
+        return $this->ServiceGUID;
+    }
+
+    /**
+     * @param string $ServiceGUID
+     * @return Application
+     */
+    public function withServiceGUID(string $ServiceGUID): Application
+    {
+        $new = clone $this;
+        $new->ServiceGUID = $ServiceGUID;
 
         return $new;
     }
