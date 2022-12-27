@@ -7,33 +7,33 @@ use Webmasterskaya\Soap\Base\Type\RequestInterface;
 class GetCost implements RequestInterface
 {
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\CostingOptions
+     * @var CostingOptions
      */
     private $CostingOptions;
 
     /**
      * Constructor
      *
-     * @var \Webmasterskaya\Soap\CCCB\Type\CostingOptions $CostingOptions
+     * @var CostingOptions $CostingOptions
      */
-    public function __construct($CostingOptions)
+    public function __construct(CostingOptions $CostingOptions)
     {
         $this->CostingOptions = $CostingOptions;
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\CostingOptions
+     * @return CostingOptions
      */
-    public function getCostingOptions()
+    public function getCostingOptions(): CostingOptions
     {
         return $this->CostingOptions;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\CostingOptions $CostingOptions
+     * @param CostingOptions $CostingOptions
      * @return GetCost
      */
-    public function withCostingOptions($CostingOptions)
+    public function withCostingOptions(CostingOptions $CostingOptions): GetCost
     {
         $new = clone $this;
         $new->CostingOptions = $CostingOptions;
