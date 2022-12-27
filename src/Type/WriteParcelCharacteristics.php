@@ -4,20 +4,27 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 
+/**
+ * Метод WEB-сервиса записывает в базу ЕИС характеристики отправления. Позже эти характеристики отправления
+ * используются для подстановки в документ «Прием отправлений от клиента». Характеристики отправлений хранятся в
+ * регистре сведений «Характеристики отправлений с зарезервированными номерами».
+ * При успешной записи возвращается Истина. Ложь возвращается, если при записи возникли какие-то ошибки,
+ * например, по уникальному идентификатору в базе ЕИС не найден договор или передан пустой приемный номер отправления.
+ */
 class WriteParcelCharacteristics implements RequestInterface
 {
     /**
-     * @var string
+     * @var string  Уникальный идентификатор договора
      */
     private $ContractGUID;
 
     /**
-     * @var string
+     * @var string Приемный номер отправления
      */
     private $ParcelNumber;
 
     /**
-     * @var \Webmasterskaya\Soap\CCCB\Type\Parcel
+     * @var Parcel Характеристики отправления
      */
     private $ParcelCharacteristics;
 
@@ -26,9 +33,9 @@ class WriteParcelCharacteristics implements RequestInterface
      *
      * @var string $ContractGUID
      * @var string $ParcelNumber
-     * @var \Webmasterskaya\Soap\CCCB\Type\Parcel $ParcelCharacteristics
+     * @var Parcel $ParcelCharacteristics
      */
-    public function __construct($ContractGUID, $ParcelNumber, $ParcelCharacteristics)
+    public function __construct(string $ContractGUID, string $ParcelNumber, Parcel $ParcelCharacteristics)
     {
         $this->ContractGUID = $ContractGUID;
         $this->ParcelNumber = $ParcelNumber;
@@ -38,7 +45,7 @@ class WriteParcelCharacteristics implements RequestInterface
     /**
      * @return string
      */
-    public function getContractGUID()
+    public function getContractGUID(): string
     {
         return $this->ContractGUID;
     }
@@ -47,7 +54,7 @@ class WriteParcelCharacteristics implements RequestInterface
      * @param string $ContractGUID
      * @return WriteParcelCharacteristics
      */
-    public function withContractGUID($ContractGUID)
+    public function withContractGUID(string $ContractGUID): WriteParcelCharacteristics
     {
         $new = clone $this;
         $new->ContractGUID = $ContractGUID;
@@ -58,7 +65,7 @@ class WriteParcelCharacteristics implements RequestInterface
     /**
      * @return string
      */
-    public function getParcelNumber()
+    public function getParcelNumber(): string
     {
         return $this->ParcelNumber;
     }
@@ -67,7 +74,7 @@ class WriteParcelCharacteristics implements RequestInterface
      * @param string $ParcelNumber
      * @return WriteParcelCharacteristics
      */
-    public function withParcelNumber($ParcelNumber)
+    public function withParcelNumber(string $ParcelNumber): WriteParcelCharacteristics
     {
         $new = clone $this;
         $new->ParcelNumber = $ParcelNumber;
@@ -76,18 +83,18 @@ class WriteParcelCharacteristics implements RequestInterface
     }
 
     /**
-     * @return \Webmasterskaya\Soap\CCCB\Type\Parcel
+     * @return Parcel
      */
-    public function getParcelCharacteristics()
+    public function getParcelCharacteristics(): Parcel
     {
         return $this->ParcelCharacteristics;
     }
 
     /**
-     * @param \Webmasterskaya\Soap\CCCB\Type\Parcel $ParcelCharacteristics
+     * @param Parcel $ParcelCharacteristics
      * @return WriteParcelCharacteristics
      */
-    public function withParcelCharacteristics($ParcelCharacteristics)
+    public function withParcelCharacteristics(Parcel $ParcelCharacteristics): WriteParcelCharacteristics
     {
         $new = clone $this;
         $new->ParcelCharacteristics = $ParcelCharacteristics;
