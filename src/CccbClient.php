@@ -10,6 +10,8 @@ use Webmasterskaya\Soap\Base\Exception\SoapException;
 use Webmasterskaya\Soap\Base\Soap\Metadata\MetadataOptions;
 use Webmasterskaya\Soap\Base\Type\RequestInterface;
 use Webmasterskaya\Soap\Base\Type\ResultInterface;
+use Webmasterskaya\Soap\CCCB\Type\Address;
+use Webmasterskaya\Soap\CCCB\Type\AutomatizationInfoResponse;
 use Webmasterskaya\Soap\CCCB\Type\ChangeIDResponse;
 
 class CccbClient extends ClientAbstract
@@ -153,7 +155,7 @@ class CccbClient extends ClientAbstract
     }
 
     /**
-     * Создаёт новую заявку на отправление и возвращает параметры созданной заявки
+     * Метод создаёт новую заявку на отправление и возвращает параметры созданной заявки
      *
      * @param Type\Application $application Заявка на отправление
      * @param string|null $correctionApplication GUID заявки, если нужно скорректировать уже существующую заявку
@@ -262,13 +264,14 @@ class CccbClient extends ClientAbstract
     }
 
     /**
-     * @param RequestInterface|Type\AutomatizationInfo $parameters
-     * @return ResultInterface|Type\AutomatizationInfoResponse
-     * @throws SoapException
+     * Метод возвращает информацию об УСС, который обслуживает адрес, переданный в качестве входного параметра.
+     *
+     * @param Address $AddressInfo Адрес для проверки
+     * @return ResultInterface|AutomatizationInfoResponse
      */
-    public function automatizationInfo(Type\AutomatizationInfo $parameters
-    ): Type\AutomatizationInfoResponse {
-        return $this->call('AutomatizationInfo', $parameters);
+    public function automatizationInfo(Type\Address $AddressInfo): Type\AutomatizationInfoResponse
+    {
+        return $this->call('AutomatizationInfo', new Type\AutomatizationInfo($AddressInfo));
     }
 
     /**
