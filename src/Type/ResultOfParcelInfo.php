@@ -47,7 +47,7 @@ class ResultOfParcelInfo
     /**
      * @return bool
      */
-    public function getFound()
+    public function getFound(): bool
     {
         return $this->Found;
     }
@@ -56,7 +56,7 @@ class ResultOfParcelInfo
      * @param bool $Found
      * @return ResultOfParcelInfo
      */
-    public function withFound($Found)
+    public function withFound(bool $Found): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->Found = $Found;
@@ -67,7 +67,7 @@ class ResultOfParcelInfo
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->Status;
     }
@@ -76,7 +76,7 @@ class ResultOfParcelInfo
      * @param string $Status
      * @return ResultOfParcelInfo
      */
-    public function withStatus($Status)
+    public function withStatus(string $Status): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->Status = $Status;
@@ -87,7 +87,7 @@ class ResultOfParcelInfo
     /**
      * @return string
      */
-    public function getPlaceFrom()
+    public function getPlaceFrom(): string
     {
         return $this->PlaceFrom;
     }
@@ -96,7 +96,7 @@ class ResultOfParcelInfo
      * @param string $PlaceFrom
      * @return ResultOfParcelInfo
      */
-    public function withPlaceFrom($PlaceFrom)
+    public function withPlaceFrom(string $PlaceFrom): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->PlaceFrom = $PlaceFrom;
@@ -107,7 +107,7 @@ class ResultOfParcelInfo
     /**
      * @return string
      */
-    public function getPlaceTo()
+    public function getPlaceTo(): string
     {
         return $this->PlaceTo;
     }
@@ -116,7 +116,7 @@ class ResultOfParcelInfo
      * @param string $PlaceTo
      * @return ResultOfParcelInfo
      */
-    public function withPlaceTo($PlaceTo)
+    public function withPlaceTo(string $PlaceTo): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->PlaceTo = $PlaceTo;
@@ -127,7 +127,7 @@ class ResultOfParcelInfo
     /**
      * @return string
      */
-    public function getPlaceCurrent()
+    public function getPlaceCurrent(): string
     {
         return $this->PlaceCurrent;
     }
@@ -136,7 +136,7 @@ class ResultOfParcelInfo
      * @param string $PlaceCurrent
      * @return ResultOfParcelInfo
      */
-    public function withPlaceCurrent($PlaceCurrent)
+    public function withPlaceCurrent(string $PlaceCurrent): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->PlaceCurrent = $PlaceCurrent;
@@ -147,7 +147,7 @@ class ResultOfParcelInfo
     /**
      * @return \DateTimeInterface
      */
-    public function getDeliveryTime()
+    public function getDeliveryTime(): \DateTimeInterface
     {
         return $this->DeliveryTime;
     }
@@ -156,7 +156,7 @@ class ResultOfParcelInfo
      * @param \DateTimeInterface $DeliveryTime
      * @return ResultOfParcelInfo
      */
-    public function withDeliveryTime($DeliveryTime)
+    public function withDeliveryTime(\DateTimeInterface $DeliveryTime): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->DeliveryTime = $DeliveryTime;
@@ -167,7 +167,7 @@ class ResultOfParcelInfo
     /**
      * @return string
      */
-    public function getDeliveryPerson()
+    public function getDeliveryPerson(): string
     {
         return $this->DeliveryPerson;
     }
@@ -176,7 +176,7 @@ class ResultOfParcelInfo
      * @param string $DeliveryPerson
      * @return ResultOfParcelInfo
      */
-    public function withDeliveryPerson($DeliveryPerson)
+    public function withDeliveryPerson(string $DeliveryPerson): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->DeliveryPerson = $DeliveryPerson;
@@ -187,7 +187,7 @@ class ResultOfParcelInfo
     /**
      * @return string
      */
-    public function getReason()
+    public function getReason(): string
     {
         return $this->Reason;
     }
@@ -196,7 +196,7 @@ class ResultOfParcelInfo
      * @param string $Reason
      * @return ResultOfParcelInfo
      */
-    public function withReason($Reason)
+    public function withReason(string $Reason): ResultOfParcelInfo
     {
         $new = clone $this;
         $new->Reason = $Reason;
