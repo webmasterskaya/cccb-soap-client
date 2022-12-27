@@ -34,14 +34,19 @@ class Registration implements RequestInterface
     /**
      * Constructor
      *
-     * @var string $INN
-     * @var string $KPP
-     * @var string $ContractNumber
-     * @var string $Login
-     * @var string $EMail
+     * @var string|null $INN
+     * @var string|null $KPP
+     * @var string|null $ContractNumber
+     * @var string|null $Login
+     * @var string|null $EMail
      */
-    public function __construct($INN, $KPP, $ContractNumber, $Login, $EMail)
-    {
+    public function __construct(
+        string $INN = null,
+        string $KPP = null,
+        string $ContractNumber = null,
+        string $Login = null,
+        string $EMail = null
+    ) {
         $this->INN = $INN;
         $this->KPP = $KPP;
         $this->ContractNumber = $ContractNumber;

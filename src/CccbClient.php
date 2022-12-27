@@ -113,11 +113,11 @@ class CccbClient extends ClientAbstract
      * @throws SoapException
      */
     public function registration(
-        string $INN,
-        string $KPP,
-        string $contractNumber,
-        string $login,
-        string $eMail
+        string $INN = null,
+        string $KPP = null,
+        string $contractNumber = null,
+        string $login = null,
+        string $eMail = null
     ): Type\RegistrationResponse {
         return $this->call('Registration', new Type\Registration($INN, $KPP, $contractNumber, $login, $eMail));
     }
