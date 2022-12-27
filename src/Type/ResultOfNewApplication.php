@@ -5,34 +5,34 @@ namespace Webmasterskaya\Soap\CCCB\Type;
 class ResultOfNewApplication
 {
     /**
-     * @var bool
+     * @var bool Заявка создана удачно
      */
     private $Result;
 
     /**
-     * @var string
+     * @var string Если заявка не создана, то будет указана причина
      */
     private $Reason;
 
     /**
-     * @var string
+     * @var string GUID созданной заявки
      */
     private $ApplicationGUID;
 
     /**
-     * @var string
+     * @var string Номер заявки
      */
     private $ApplicationNumber;
 
     /**
-     * @var string
+     * @var string Номер отправлеиня (используется для отслеживания)
      */
     private $Numbers;
 
     /**
      * @return bool
      */
-    public function getResult()
+    public function getResult(): bool
     {
         return $this->Result;
     }
@@ -41,7 +41,7 @@ class ResultOfNewApplication
      * @param bool $Result
      * @return ResultOfNewApplication
      */
-    public function withResult($Result)
+    public function withResult(bool $Result): ResultOfNewApplication
     {
         $new = clone $this;
         $new->Result = $Result;
@@ -52,7 +52,7 @@ class ResultOfNewApplication
     /**
      * @return string
      */
-    public function getReason()
+    public function getReason(): string
     {
         return $this->Reason;
     }
@@ -61,7 +61,7 @@ class ResultOfNewApplication
      * @param string $Reason
      * @return ResultOfNewApplication
      */
-    public function withReason($Reason)
+    public function withReason(string $Reason): ResultOfNewApplication
     {
         $new = clone $this;
         $new->Reason = $Reason;
@@ -72,7 +72,7 @@ class ResultOfNewApplication
     /**
      * @return string
      */
-    public function getApplicationGUID()
+    public function getApplicationGUID(): string
     {
         return $this->ApplicationGUID;
     }
@@ -81,7 +81,7 @@ class ResultOfNewApplication
      * @param string $ApplicationGUID
      * @return ResultOfNewApplication
      */
-    public function withApplicationGUID($ApplicationGUID)
+    public function withApplicationGUID(string $ApplicationGUID): ResultOfNewApplication
     {
         $new = clone $this;
         $new->ApplicationGUID = $ApplicationGUID;
@@ -92,7 +92,7 @@ class ResultOfNewApplication
     /**
      * @return string
      */
-    public function getApplicationNumber()
+    public function getApplicationNumber(): string
     {
         return $this->ApplicationNumber;
     }
@@ -101,7 +101,7 @@ class ResultOfNewApplication
      * @param string $ApplicationNumber
      * @return ResultOfNewApplication
      */
-    public function withApplicationNumber($ApplicationNumber)
+    public function withApplicationNumber(string $ApplicationNumber): ResultOfNewApplication
     {
         $new = clone $this;
         $new->ApplicationNumber = $ApplicationNumber;
@@ -112,7 +112,7 @@ class ResultOfNewApplication
     /**
      * @return string
      */
-    public function getNumbers()
+    public function getNumbers(): string
     {
         return $this->Numbers;
     }
@@ -121,7 +121,7 @@ class ResultOfNewApplication
      * @param string $Numbers
      * @return ResultOfNewApplication
      */
-    public function withNumbers($Numbers)
+    public function withNumbers(string $Numbers): ResultOfNewApplication
     {
         $new = clone $this;
         $new->Numbers = $Numbers;
